@@ -13,4 +13,9 @@ fn main() {
     println!("System name: {}", System::name().unwrap_or_default());
     println!("System kernel version: {}", System::kernel_version().unwrap_or_default());
     println!("Memory Usage : {}/{} MB", sys.used_memory() / 1024 /1024, sys.total_memory() / 1024 / 1024);
-}
+    if sys.total_swap() != 0 {
+        println!("Swap Usage : {}/{} MB", sys.used_swap() / 1024 /1024, sys.total_swap() / 1024 / 1024);
+    }
+    println!("CPU Usage : {}%", sys.global_cpu_usage());
+
+    }
