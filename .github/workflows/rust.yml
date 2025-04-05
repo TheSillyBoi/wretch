@@ -10,20 +10,14 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  lint:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo clippy --verbose
   build:
-
+    name: Build wretch
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    - name: Lint
+      run: cargo clippy --verbose
     - name: Build
       run: cargo build --verbose
     - name: Run tests
