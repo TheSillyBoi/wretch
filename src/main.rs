@@ -1,8 +1,23 @@
 use sysinfo::*;
 use colored::Colorize;
 
+fn ascii_art(){
+    if System::long_os_version().unwrap_or_default().contains("Fedora"){
+        let _arch_ascii1 = r"           .        ";
+        let _arch_ascii2 = r"          / \       ";
+        let _arch_ascii3 = r"         /   \      ";
+        let _arch_ascii4 = r"        /^.   \     ";
+        let _arch_ascii5 = r"       /  .-.  \    ";
+        let _arch_ascii6 = r"      /  (   ) _\   ";
+        let _arch_ascii7 = r"     / _.~   ~._^\  ";
+        let _arch_ascii8 = r"    /.^         ^.\ ";
+    }    
 
+
+}
 fn main() {
+
+    ascii_art();
     let mut sys = System::new_all();
     sys.refresh_all();
     println!("=>System information");
@@ -20,17 +35,17 @@ fn main() {
     //println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
     //println!("Battery Usage: {}%", sys.used_battery())
     
+    println!("{}",_arch_ascii1);
+    println!("{}",_arch_ascii2);
+    println!("{}",_arch_ascii3);
+    println!("{}",_arch_ascii4);
+    println!("{}",_arch_ascii5);
+    println!("{}",_arch_ascii6);
+    println!("{}",_arch_ascii7);
+    println!("{}",_arch_ascii8);
 
 
 
 
-   
-    // println!(r"           .        ");
-    // println!(r"          / \       ");
-    // println!(r"         /   \      ");
-    // println!(r"        /^.   \     ");
-    // println!(r"       /  .-.  \    ");
-    // println!(r"      /  (   ) _\   ");
-    // println!(r"     / _.~   ~._^\  ");
-    // println!(r"    /.^         ^.\ ");
 }
+
