@@ -42,12 +42,18 @@ fn ascii_art() -> [String; 8] {
 }
 fn main() {
     let os_ascii = ascii_art();
+    let mut line_num:u8 = 0;
     let mut sys = System::new_all();
     sys.refresh_all();
-    println!("=>System information");
+    print!("{}",os_ascii[0].bright_cyan());
+    println!("System information");
+    print!("{}",os_ascii[1]);
     println!("System name: {}", System::name().unwrap().cyan());
+    print!("{}",os_ascii[2]);
     println!("Operating System Version: {}", System::long_os_version().unwrap_or_default().red());
+    print!("{}",os_ascii[3]);
     println!("System kernel version: {}", System::kernel_long_version());
+    print!("{}",os_ascii[4]);
     println!("Memory Usage : {}/{} MB ({}%)", sys.used_memory() / 1024 /1024, sys.total_memory() / 1024 / 1024, sys.used_memory() * 100 / sys.total_memory());
     if sys.total_swap() != 0 {
         println!("Swap Usage : {}/{} MB ({}%)", sys.used_swap() / 1024 /1024, sys.total_swap() / 1024 / 1024, sys.used_swap() * 100 / sys.total_swap());
@@ -59,9 +65,9 @@ fn main() {
     // println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
     // println!("Battery Usage: {}%", sys.used_battery())
     
-    for line in os_ascii.iter() {
-        println!("{}", line.bright_cyan());
-    }
+    // for line in os_ascii.iter() {
+    //     println!("{}", line.bright_cyan());
+    // }
 
 }
 
