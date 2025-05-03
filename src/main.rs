@@ -47,21 +47,24 @@ fn main() {
     sys.refresh_all();
     print!("{}",os_ascii[0].bright_cyan());
     println!("System information");
-    print!("{}",os_ascii[1]);
+    print!("{}",os_ascii[1].bright_cyan());
     println!("System name: {}", System::name().unwrap().cyan());
-    print!("{}",os_ascii[2]);
+    print!("{}",os_ascii[2].bright_cyan());
     println!("Operating System Version: {}", System::long_os_version().unwrap_or_default().red());
-    print!("{}",os_ascii[3]);
+    print!("{}",os_ascii[3].bright_cyan());
     println!("System kernel version: {}", System::kernel_long_version());
-    print!("{}",os_ascii[4]);
+    print!("{}",os_ascii[4].bright_cyan());
     println!("Memory Usage : {}/{} MB ({}%)", sys.used_memory() / 1024 /1024, sys.total_memory() / 1024 / 1024, sys.used_memory() * 100 / sys.total_memory());
+    print!("{}",os_ascii[5].bright_cyan());
     if sys.total_swap() != 0 {
         println!("Swap Usage : {}/{} MB ({}%)", sys.used_swap() / 1024 /1024, sys.total_swap() / 1024 / 1024, sys.used_swap() * 100 / sys.total_swap());
     }
     else {
         println!("No swap memory available"); 
     }
+    print!("{}",os_ascii[6].bright_cyan());
     println!("CPU Usage : {}%", sys.global_cpu_usage());
+    println!("{}",os_ascii[7].bright_cyan());
     // println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
     // println!("Battery Usage: {}%", sys.used_battery())
     
