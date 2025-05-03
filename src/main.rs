@@ -29,20 +29,19 @@ fn ascii_art() -> [String; 8] {
      else if os_version.contains("Windows"){
 
          retval[0] = String::from(r"#######    ####### ");
-         retval[0] = String::from(r"#######    ####### ");
-         retval[0] = String::from(r"#######    ####### ");
-         retval[0] = String::from(r"                   ");
-         retval[0] = String::from(r"                   ");
-         retval[0] = String::from(r"#######    ####### ");
-         retval[0] = String::from(r"#######    ####### ");
-         retval[0] = String::from(r"#######    ####### ");
+         retval[1] = String::from(r"#######    ####### ");
+         retval[2] = String::from(r"#######    ####### ");
+         retval[3] = String::from(r"                   ");
+         retval[4] = String::from(r"                   ");
+         retval[5] = String::from(r"#######    ####### ");
+         retval[6] = String::from(r"#######    ####### ");
+         retval[7] = String::from(r"#######    ####### ");
      }
 
     return retval;
 }
 fn main() {
     let os_ascii = ascii_art();
-    let mut line_num:u8 = 0;
     let mut sys = System::new_all();
     sys.refresh_all();
     print!("{}",os_ascii[0].bright_cyan());
