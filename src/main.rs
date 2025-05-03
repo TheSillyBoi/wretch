@@ -1,19 +1,12 @@
 use sysinfo::*;
 use colored::Colorize;
+use std::string::String;
+
 
 fn ascii_art() -> [String; 8] {
-    let retval: [String; 8] = [""; 8];
-    if System::long_os_version().unwrap_or_default().contains("Arch"){
-        retval[0] = String::from(r"           .        ");
-        // let _ascii2 = r"          / \       ";
-        // let _ascii3 = r"         /   \      ";
-        // let _ascii4 = r"        /^.   \     ";
-        // let _ascii5 = r"       /  .-.  \    ";
-        // let _ascii6 = r"      /  (   ) _\   ";
-        // let _ascii7 = r"     / _.~   ~._^\  ";
-        // let _ascii8 = r"    /.^         ^.\ ";
-    }
-    else if System::long_os_version().unwrap_or_default().contains("Fedora"){
+    let os_version = System::long_os_version().unwrap_or_default();
+    let mut retval: [String; 8] = Default::default();
+    if os_version.contains("Arch"){
         retval[0] = String::from(r"           .        ");
         retval[1] = String::from(r"          / \       ");
         retval[2] = String::from(r"         /   \      ");
@@ -23,22 +16,31 @@ fn ascii_art() -> [String; 8] {
         retval[6] = String::from(r"     / _.~   ~._^\  ");
         retval[7] = String::from(r"    /.^         ^.\ ");
     }
-    // else if System::long_os_version().unwrap_or_default().contains("Windows"){
+    else if os_version.contains("Fedora"){
+        retval[0] = String::from(r"           .        ");
+        retval[1] = String::from(r"          / \       ");
+        retval[2] = String::from(r"         /   \      ");
+        retval[3] = String::from(r"        /^.   \     ");
+        retval[4] = String::from(r"       /  .-.  \    ");
+        retval[5] = String::from(r"      /  (   ) _\   ");
+        retval[6] = String::from(r"     / _.~   ~._^\  ");
+        retval[7] = String::from(r"    /.^         ^.\ ");
+    }
+     else if os_version.contains("Windows"){
 
-    //     let _ascii1 = r"⬛⬛⬛⬛  ";
-    //     let _ascii2 = r"⬛⬛⬛⬛";
-    //     let _ascii3 = r"⬛⬛⬛⬛       ;
-    //     let _ascii4 = r"  ";
-    //     let _ascii5 = r"       /  .-.  \    ";
-    //     let _ascii6 = r"⬛⬛⬛⬛     /  (   ) _\   ";
-    //     let _ascii7 = r"⬛⬛⬛⬛~   ~._^\  ";
-    //     let _ascii8 = r"⬛⬛⬛⬛        ^.\ ";
-    // }
+         retval[0] = String::from(r"#######    ####### ");
+         retval[0] = String::from(r"#######    ####### ");
+         retval[0] = String::from(r"#######    ####### ");
+         retval[0] = String::from(r"                   ");
+         retval[0] = String::from(r"                   ");
+         retval[0] = String::from(r"#######    ####### ");
+         retval[0] = String::from(r"#######    ####### ");
+         retval[0] = String::from(r"#######    ####### ");
+     }
 
     return retval;
 }
 fn main() {
-
     let os_ascii = ascii_art();
     let mut sys = System::new_all();
     sys.refresh_all();
@@ -54,11 +56,11 @@ fn main() {
         println!("No swap memory available"); 
     }
     println!("CPU Usage : {}%", sys.global_cpu_usage());
-    //println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
-    //println!("Battery Usage: {}%", sys.used_battery())
+    // println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
+    // println!("Battery Usage: {}%", sys.used_battery())
     
     for line in os_ascii.iter() {
-        println!("{}", line);
+        println!("{}", line.bright_cyan());
     }
 
 }
