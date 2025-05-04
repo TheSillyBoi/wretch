@@ -64,7 +64,7 @@ fn main() {
     let mem_used_mb = sys.used_memory() / 1024 /1024;
     let mem_total_mb = sys.total_memory() / 1024 / 1024;
     print!("{}",os_ascii[5].bright_cyan());
-    println!("Memory Usage : {}/{} MB ({}{}", mem_used_mb.to_string().cyan(), mem_total_mb.to_string().cyan() , sys.used_memory() * 100 / sys.total_memory(),"%)".cyan());
+    println!("Memory Usage : {}{}{} MB ({}{}", mem_used_mb.to_string().cyan(), "/".cyan(), mem_total_mb.to_string().cyan() , sys.used_memory() * 100 / sys.total_memory(),"%)".cyan());
 
     print!("{}",os_ascii[6].bright_cyan());
     if sys.total_swap() != 0 {
