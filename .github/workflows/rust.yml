@@ -9,6 +9,11 @@ on:
 env:
   CARGO_TERM_COLOR: always
 
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: read
+
 jobs:
   build:
     name: Build wretch
@@ -22,4 +27,19 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Release nightly
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: andelf/nightly-release@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: nightly
+        name: 'Development Release'
+        body: |
+          Generated nightly release for wretch.
+          Will be unstable!
+          This is a debug build, and not a release build so it will have debug symbols and have a larger file size than normal releases.
+        files: |
+          target/debug/wretch
+  
 
