@@ -64,16 +64,19 @@ fn main() {
     let mem_used_mb = sys.used_memory() / 1024 /1024;
     let mem_total_mb = sys.total_memory() / 1024 / 1024;
     let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory();
+    let swap_used_mb = sys.used_swap() / 1024 /1024;
+    let swap_total_mb = sys.total_swap() / 1024 /1024;
+    let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap();
     print!("{}",os_ascii[5].bright_cyan());
     println!("Memory Usage : {}{}{} {} {}{}{}", mem_used_mb.to_string().cyan(), "/".cyan(), mem_total_mb.to_string().cyan(), "MB".cyan(), "(".cyan() ,mem_usage_prc.to_string().cyan(),"%)".cyan());
 
     print!("{}",os_ascii[6].bright_cyan());
     if sys.total_swap() != 0 {
-        println!("Swap Usage : {}/{} MB ({}%)", sys.used_swap() / 1024 /1024, sys.total_swap() / 1024 / 1024, sys.used_swap() * 100 / sys.total_swap());
+        println!("Swap Usage : {}{}{} {} {}{}{}",swap_used_mb.to_string().cyan(), "/".cyan() , swap_total_mb.to_string().cyan(), "MB".cyan(),"(".cyan(), swap_usage_prc.to_string().cyan()  , "%)".cyan());
     }
 
     else {
-        println!("No swap memory available"); 
+        println!("No Swap Memory"); 
     }
 
     print!("{}",os_ascii[7].bright_cyan());
