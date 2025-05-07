@@ -20,23 +20,23 @@ fn ascii_art() -> [ColoredString; 8] {
     else if os_version.contains("Fedora"){
         retval[0] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
         retval[1] = ColoredString::from(r"  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓  ").bright_cyan();
-        retval[2] = ColoredString::from(r" ▓▓▓▓▓▓▓▓ ░▓▓  ▓▓▓▓ ").bright_cyan();
+        retval[2] = ColoredString::from(r" ▓▓▓▓▓▓▓▓  ▓▓  ▓▓▓▓ ").bright_cyan();
         retval[3] = ColoredString::from(r"▒▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
         retval[4] = ColoredString::from(r"▓▓▓▓    ▓   ▓▓▓▓▓▓▓ ").bright_cyan();
         retval[5] = ColoredString::from(r"▓▓▓  ▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
-        retval[6] = ColoredString::from(r"▓▓▓▓  ▓▒  ▓▓▓▓▓▓▓▓  ").bright_cyan();
+        retval[6] = ColoredString::from(r"▓▓▓▓      ▓▓▓▓▓▓▓▓  ").bright_cyan();
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
     }
      else if os_version.contains("Windows"){
 
-         retval[0] = ColoredString::from(r"#######    ####### ").bright_cyan();
-         retval[1] = ColoredString::from(r"#######    ####### ").bright_cyan();
-         retval[2] = ColoredString::from(r"#######    ####### ").bright_cyan();
-         retval[3] = ColoredString::from(r"                   ").bright_cyan();
-         retval[4] = ColoredString::from(r"                   ").bright_cyan();
-         retval[5] = ColoredString::from(r"#######    ####### ").bright_cyan();
-         retval[6] = ColoredString::from(r"#######    ####### ").bright_cyan();
-         retval[7] = ColoredString::from(r"#######    ####### ").bright_cyan();
+         retval[0] = ColoredString::from(r"  ┌──────┐  ┌──────┐").bright_cyan();
+         retval[1] = ColoredString::from(r"  |      │  │      │").bright_cyan();
+         retval[2] = ColoredString::from(r"  |      |  |      |").bright_cyan();
+         retval[3] = ColoredString::from(r"  └──────┘  └──────┘").bright_cyan();
+         retval[4] = ColoredString::from(r"  ┌──────┐  ┌──────┐").bright_cyan();
+         retval[5] = ColoredString::from(r"  |      |  |      |").bright_cyan();
+         retval[6] = ColoredString::from(r"  |      |  |      |").bright_cyan();
+         retval[7] = ColoredString::from(r"  └──────┘  └──────┘").bright_cyan();
      }
 
     return retval;
@@ -83,11 +83,6 @@ fn main() {
     print!("{}",os_ascii[7].clone());
     println!("CPU Usage : {}{}", sys.global_cpu_usage().to_string().cyan(),"%".cyan());
     // println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
-    // println!("Battery Usage: {}%", sys.used_battery())
-    
-    // for line in os_ascii.iter() {
-    //     println!("{}", line.bright_cyan());
-    // }
+    // println!("Battery Usage: {}%"
 
 }
-
