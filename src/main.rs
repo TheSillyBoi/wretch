@@ -29,14 +29,14 @@ fn ascii_art() -> [ColoredString; 8] {
     }
      else if os_version.contains("Windows"){
 
-         retval[0] = ColoredString::from(r"  ┌──────┐  ┌──────┐").bright_cyan();
-         retval[1] = ColoredString::from(r"  |      │  │      │").bright_cyan();
-         retval[2] = ColoredString::from(r"  |      |  |      |").bright_cyan();
-         retval[3] = ColoredString::from(r"  └──────┘  └──────┘").bright_cyan();
-         retval[4] = ColoredString::from(r"  ┌──────┐  ┌──────┐").bright_cyan();
-         retval[5] = ColoredString::from(r"  |      |  |      |").bright_cyan();
-         retval[6] = ColoredString::from(r"  |      |  |      |").bright_cyan();
-         retval[7] = ColoredString::from(r"  └──────┘  └──────┘").bright_cyan();
+         retval[0] = ColoredString::from(r"  ╔══════╗  ╔══════╗").bright_cyan();
+         retval[1] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
+         retval[2] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
+         retval[3] = ColoredString::from(r"  ╚══════╝  ╚══════╝").bright_cyan();
+         retval[4] = ColoredString::from(r"  ╔══════╗  ╔══════╗").bright_cyan();
+         retval[5] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
+         retval[6] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
+         retval[7] = ColoredString::from(r"  ╚══════╝  ╚══════╝").bright_cyan();
      }
 
     return retval;
