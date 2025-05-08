@@ -38,6 +38,27 @@ fn ascii_art() -> [ColoredString; 8] {
          retval[6] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
          retval[7] = ColoredString::from(r"  ╚══════╝  ╚══════╝").bright_cyan();
      }
+     else if os_version.contains("Mac"){
+        retval[0] = ColoredString::from(r"           ▓▓       ").white();
+        retval[1] = ColoredString::from(r"          ▓▓        ").white();
+        retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
+        retval[3] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓     ").white();
+        retval[4] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓      ").white();
+        retval[5] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓▓     ").white();
+        retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
+        retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
+     }        
+    else if os_version.contains("ubuntu"){
+        retval[0] = ColoredString::from(r"           ▓▓       ").white();
+        retval[1] = ColoredString::from(r"          ▓▓        ").white();
+        retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
+        retval[3] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓     ").white();
+        retval[4] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓      ").white();
+        retval[5] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓▓     ").white();
+        retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
+        retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
+
+     }
 
     return retval;
 }
@@ -68,7 +89,7 @@ fn main() {
     let swap_used_mb = sys.used_swap() / 1024 /1024;
     let swap_total_mb = sys.total_swap() / 1024 /1024;
     let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap();
-    print!("{}",os_ascii[5].clone().bright_cyan());
+    print!("{}",os_ascii[5].clone());
     println!("Memory Usage : {}{}{} {} {}{}{}", mem_used_mb.to_string().cyan(), "/".cyan(), mem_total_mb.to_string().cyan(), "MB".cyan(), "(".cyan() ,mem_usage_prc.to_string().cyan(),"%)".cyan());
 
     print!("{}",os_ascii[6].clone());
