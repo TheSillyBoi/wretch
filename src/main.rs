@@ -28,15 +28,14 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
     }
      else if os_version.contains("Windows"){
-
-         retval[0] = ColoredString::from(r"  ╔══════╗  ╔══════╗").bright_cyan();
-         retval[1] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
-         retval[2] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
-         retval[3] = ColoredString::from(r"  ╚══════╝  ╚══════╝").bright_cyan();
-         retval[4] = ColoredString::from(r"  ╔══════╗  ╔══════╗").bright_cyan();
-         retval[5] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
-         retval[6] = ColoredString::from(r"  ║      ║  ║      ║").bright_cyan();
-         retval[7] = ColoredString::from(r"  ╚══════╝  ╚══════╝").bright_cyan();
+        retval[0] = ColoredString::from(r"  ╔══════╗  ╔══════╗").truecolor(0, 120, 212);
+        retval[1] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
+        retval[2] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
+        retval[3] = ColoredString::from(r"  ╚══════╝  ╚══════╝").truecolor(0, 120, 212);
+        retval[4] = ColoredString::from(r"  ╔══════╗  ╔══════╗").truecolor(0, 120, 212);
+        retval[5] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
+        retval[6] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
+        retval[7] = ColoredString::from(r"  ╚══════╝  ╚══════╝").truecolor(0, 120, 212);
      }
      else if os_version.contains("Mac"){
         retval[0] = ColoredString::from(r"           ▓▓       ").white();
@@ -57,14 +56,13 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[6] = ColoredString::from(r"▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓").truecolor(250, 70, 22);
-
      }
 
     return retval;
 }
 fn main() {
-    let os_ascii = ascii_art();
-    let mut sys = System::new_all();
+    let os_ascii: [ColoredString; 8] = ascii_art();
+    let mut sys: System = System::new_all();
     sys.refresh_all();
 
     print!("{}",os_ascii[0].clone());
@@ -83,12 +81,12 @@ fn main() {
     println!("Hostname: {}", System::host_name().unwrap().cyan());
 
 
-    let mem_used_mb = sys.used_memory() / 1024 /1024;
-    let mem_total_mb = sys.total_memory() / 1024 / 1024;
-    let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory();
-    let swap_used_mb = sys.used_swap() / 1024 /1024;
-    let swap_total_mb = sys.total_swap() / 1024 /1024;
-    let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap();
+    let mem_used_mb: u64 = sys.used_memory() / 1024 /1024;
+    let mem_total_mb: u64 = sys.total_memory() / 1024 / 1024;
+    let mem_usage_prc: u64 =  sys.used_memory() * 100 / sys.total_memory();
+    let swap_used_mb: u64 = sys.used_swap() / 1024 / 1024;
+    let swap_total_mb: u64 = sys.total_swap() / 1024 / 1024;
+    let swap_usage_prc: u64 = sys.used_swap() * 100 / sys.total_swap();
     print!("{}",os_ascii[5].clone());
     println!("Memory Usage : {}{}{} {} {}{}{}", mem_used_mb.to_string().cyan(), "/".cyan(), mem_total_mb.to_string().cyan(), "MB".cyan(), "(".cyan() ,mem_usage_prc.to_string().cyan(),"%)".cyan());
 
