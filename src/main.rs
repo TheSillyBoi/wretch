@@ -48,15 +48,15 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
         retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
      }        
-    else if os_version.contains("ubuntu"){
-        retval[0] = ColoredString::from(r"           ▓▓       ").white();
-        retval[1] = ColoredString::from(r"          ▓▓        ").white();
-        retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
-        retval[3] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓     ").white();
-        retval[4] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓      ").white();
-        retval[5] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓▓     ").white();
-        retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
-        retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
+    else if os_version.contains("Ubuntu"){
+        retval[0] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓").truecolor(250, 70, 22);
+        retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓").truecolor(250, 70, 22);
+        retval[2] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
+        retval[3] = ColoredString::from(r"  ▓  ▓▓▓    ▓▓   ▓▓▓").truecolor(250, 70, 22);
+        retval[4] = ColoredString::from(r"▓▓▓  ▓▓▓    ▓▓▓▓▓▓▓▓").truecolor(250, 70, 22);
+        retval[5] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
+        retval[6] = ColoredString::from(r"▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓").truecolor(250, 70, 22);
+        retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓").truecolor(250, 70, 22);
 
      }
 
