@@ -1,7 +1,7 @@
 name: Make Draft Release for Wretch
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
