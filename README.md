@@ -8,9 +8,11 @@ a fetch type cli program that tells you info about ur system
 - we are starting out at this, feel free to contribute
 
 ## Install
-good luck (its not hard and im lazy so coming soon tm)
-## building and compileing 
-todo finish this section
+Right now you can get the latest nightly build from the releases tab
+## Building and Compiling 
+ - Download rust
+ - Clone Repo
+ - run `cargo run`
 
-# Credits
+## Credits
 https://www.asciiart.eu/computers/linux for ascii art of some logos
