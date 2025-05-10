@@ -95,7 +95,7 @@ jobs:
     - name: Get Version
       id: get_version
       run: |
-        version=$( cat ./wretch/Cargo.toml | grep 'version' | cut -d '"' -f 2)
+        version=$(grep '^version\s*=' ./wretch/Cargo.toml | head -n 1 | cut -d '"' -f 2)
         echo "version=${version}" >> $GITHUB_ENV
     - uses: actions/download-artifact@v4
       with:
