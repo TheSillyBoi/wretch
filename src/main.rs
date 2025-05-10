@@ -140,8 +140,16 @@ fn format_version() -> String {
     let is_nightly = env!("NIGHTLY");
 
     if is_nightly == "true" {
-        format!("{base}-nightly ({commit})")
+        if commit != "" {
+            format!("{base}-nightly ({commit})")
+        } else {
+            format!("{base}-nightly (commit unknown)")
+        }
     } else {
-        format!("{base} ({commit})")
+        if commit != "" {
+            format!("{base} ({commit})")
+        } else {
+            format!("{base} (commit unknown")
+        }
     }
 }
