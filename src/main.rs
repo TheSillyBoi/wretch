@@ -32,7 +32,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[6] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[7] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(0, 120, 212);
-    } else if os_version.contains("Mac"){
+    } else if os_version.contains("Darwin"){
         retval[0] = ColoredString::from(r"           ▓▓       ").white();
         retval[1] = ColoredString::from(r"          ▓▓        ").white();
         retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
