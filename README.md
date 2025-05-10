@@ -10,4 +10,7 @@ a fetch type cli program that tells you info about ur system
 ## Install
 good luck (its not hard and im lazy so coming soon tm)
 ## building and compileing 
-todo finish this section 
+todo finish this section
+
+# Credits
+https://www.asciiart.eu/computers/linux for ascii art of some logos

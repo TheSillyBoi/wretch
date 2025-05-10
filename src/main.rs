@@ -16,8 +16,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"      /  (   ) _\   ").bright_cyan();
         retval[6] = ColoredString::from(r"     / _.~   ~._^\  ").bright_cyan();
         retval[7] = ColoredString::from(r"    /.^         ^.\ ").bright_cyan();
-    }
-    else if os_version.contains("Fedora"){
+    } else if os_version.contains("Fedora"){
         retval[0] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
         retval[1] = ColoredString::from(r"  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓  ").bright_cyan();
         retval[2] = ColoredString::from(r" ▓▓▓▓▓▓▓▓  ▓▓  ▓▓▓▓ ").bright_cyan();
@@ -26,18 +25,16 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"▓▓▓  ▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
         retval[6] = ColoredString::from(r"▓▓▓▓      ▓▓▓▓▓▓▓▓  ").bright_cyan();
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
-    }
-     else if os_version.contains("Windows"){
-        retval[0] = ColoredString::from(r"  ╔══════╗  ╔══════╗").truecolor(0, 120, 212);
-        retval[1] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
-        retval[2] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
-        retval[3] = ColoredString::from(r"  ╚══════╝  ╚══════╝").truecolor(0, 120, 212);
-        retval[4] = ColoredString::from(r"  ╔══════╗  ╔══════╗").truecolor(0, 120, 212);
-        retval[5] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
-        retval[6] = ColoredString::from(r"  ║      ║  ║      ║").truecolor(0, 120, 212);
-        retval[7] = ColoredString::from(r"  ╚══════╝  ╚══════╝").truecolor(0, 120, 212);
-     }
-     else if os_version.contains("Mac"){
+    } else if os_version.contains("Windows"){
+        retval[0] = ColoredString::from(r" ╔══════╗  ╔══════╗ ").truecolor(0, 120, 212);
+        retval[1] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
+        retval[2] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
+        retval[3] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(0, 120, 212);
+        retval[4] = ColoredString::from(r" ╔══════╗  ╔══════╗ ").truecolor(0, 120, 212);
+        retval[5] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
+        retval[6] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
+        retval[7] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(0, 120, 212);
+    } else if os_version.contains("Mac"){
         retval[0] = ColoredString::from(r"           ▓▓       ").white();
         retval[1] = ColoredString::from(r"          ▓▓        ").white();
         retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
@@ -46,17 +43,16 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓▓     ").white();
         retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
         retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
-     }        
-    else if os_version.contains("Ubuntu"){
+    } else if os_version.contains("Ubuntu"){
         retval[0] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓").truecolor(250, 70, 22);
-        retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓").truecolor(250, 70, 22);
+        retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓ ").truecolor(250, 70, 22);
         retval[2] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[3] = ColoredString::from(r"  ▓  ▓▓▓    ▓▓   ▓▓▓").truecolor(250, 70, 22);
         retval[4] = ColoredString::from(r"▓▓▓  ▓▓▓    ▓▓▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[5] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[6] = ColoredString::from(r"▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓").truecolor(250, 70, 22);
-     }
+    }
 
     return retval;
 }
