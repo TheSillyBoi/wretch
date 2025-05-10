@@ -52,6 +52,21 @@ jobs:
       run: |
         cargo test --verbose
         cargo test --release --verbose
+    - name: Test Binary
+      run: |
+        if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
+          echo "Testing Debug Binary"
+          target/debug/wretch.exe
+          echo "Testing Release Binary"
+          target/release/wretch.exe
+        else
+          echo "Testing Debug Binary"
+          chmod +x target/debug/wretch
+          target/debug/wretch
+          echo "Testing Release Binary"
+          chmod +x target/release/wretch
+          target/release/wretch
+        fi
     - name: Change File Names
       shell: bash
       id: rename
