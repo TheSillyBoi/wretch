@@ -1,3 +1,4 @@
+use clap::Parser; // Import the Parser trait from clap
 use sysinfo::System; // Import the System struct from sysinfo
 use colored::{Colorize,ColoredString}; //import the Colorize trait and ColoredString struct from colored
 
@@ -60,7 +61,7 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[6] = ColoredString::from(r"    /`\_`>  <_/ \   ");
         retval[7] = ColoredString::from(r" jgs\__/'---'\__/   ");
     } else { // if the OS version does not match any of the above
-        retval[0] = ColoredString::from(r"╔══════════════════╗").;
+        retval[0] = ColoredString::from(r"╔══════════════════╗");
         retval[1] = ColoredString::from(r"║                  ║");
         retval[2] = ColoredString::from(r"║                  ║");
         retval[3] = ColoredString::from(r"║                  ║");
@@ -75,10 +76,16 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
 }
 
 
+#[derive(Parser, Debug)]
+#[command(name = "wretch", version = build_version(), about = "the tool to get information about your system", ignore_errors(true))]
+struct Args {}
+
 fn main() {
     let os_ascii = ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
+
+    let _args = Args::parse();
 
     
 
@@ -100,7 +107,7 @@ fn main() {
 
     let mem_used_mb = sys.used_memory() / 1024 /1024; // Converts used to MB
     let mem_total_mb = sys.total_memory() / 1024 / 1024; // Converts Total to MB
-    let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory(); //Calculates the percentage of memory used
+    let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory(); // Calculates the percentage of memory used
     print!("{}", os_ascii[5]); // prints the sixth line of the ascii art
     println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb.to_string(), mem_total_mb.to_string().cyan()).cyan() , format!("({}%)", mem_usage_prc.to_string()).cyan()); // prints the memory usage
 
@@ -116,4 +123,25 @@ fn main() {
 
     print!("{}", os_ascii[7]);// prints the eighth line of the ascii art
     println!("CPU Usage: {}", format!("{}%", sys.global_cpu_usage().to_string()).cyan()); // prints the CPU usage as a percentage
+}
+
+
+
+
+
+// Versioning
+fn build_version() -> &'static str {
+    Box::leak(format_version().into_boxed_str())
+}
+
+fn format_version() -> String {
+    let base = env!("CARGO_PKG_VERSION");
+    let commit = env!("GIT_HASH");
+    let is_nightly = env!("NIGHTLY");
+
+    if is_nightly == "true" {
+        format!("{base}-nightly ({commit})")
+    } else {
+        format!("{base} ({commit})")
+    }
 }

@@ -2,8 +2,10 @@
 name = "wretch"
 version = "0.1.0"
 edition = "2024"
+build = "scripts/build.rs"
 
 [dependencies]
 colored = "3.0.0"
 sysinfo = "0.34.2"
 whoami = "1.6.0"
+clap = { version = "4", features = ["derive"] }
