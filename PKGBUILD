@@ -1,4 +1,4 @@
-pkgname = "wretch"
+pkgname="wretch"
 pkgver="1.0.0"
 pkgrel=1
 pkgdesc="A simple Fetch CLI program Built with Rust"
