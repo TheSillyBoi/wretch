@@ -88,14 +88,14 @@ fn main() {
     let mem_used_mb: u64 = sys.used_memory() / 1024 /1024;
     let mem_total_mb: u64 = sys.total_memory() / 1024 / 1024;
     let mem_usage_prc: u64 =  sys.used_memory() * 100 / sys.total_memory();
-    let swap_used_mb: u64 = sys.used_swap() / 1024 / 1024;
-    let swap_total_mb: u64 = sys.total_swap() / 1024 / 1024;
-    let swap_usage_prc: u64 = sys.used_swap() * 100 / sys.total_swap();
     print!("{}",os_ascii[5].clone());
     println!("Memory Usage : {}{}{} {} {}{}{}", mem_used_mb.to_string().cyan(), "/".cyan(), mem_total_mb.to_string().cyan(), "MB".cyan(), "(".cyan() ,mem_usage_prc.to_string().cyan(),"%)".cyan());
 
     print!("{}",os_ascii[6].clone());
     if sys.total_swap() != 0 {
+    let swap_used_mb: u64 = sys.used_swap() / 1024 / 1024;
+    let swap_total_mb: u64 = sys.total_swap() / 1024 / 1024;
+    let swap_usage_prc: u64 = sys.used_swap() * 100 / sys.total_swap();
         println!("Swap Usage : {}{}{} {} {}{}{}",swap_used_mb.to_string().cyan(), "/".cyan() , swap_total_mb.to_string().cyan(), "MB".cyan(),"(".cyan(), swap_usage_prc.to_string().cyan()  , "%)".cyan());
     }
 
