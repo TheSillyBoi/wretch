@@ -16,14 +16,14 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[6] = ColoredString::from(r"     / _.~   ~._^\  ").bright_cyan();
         retval[7] = ColoredString::from(r"    /.^         ^.\ ").bright_cyan();
     } else if os_version.contains("fedora"){ // if the OS version contains "fedora" meant for fedora linux
-        retval[0] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
-        retval[1] = ColoredString::from(r"  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓  ").bright_cyan();
-        retval[2] = ColoredString::from(r" ▓▓▓▓▓▓▓▓  ▓▓  ▓▓▓▓ ").bright_cyan();
-        retval[3] = ColoredString::from(r"▒▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
-        retval[4] = ColoredString::from(r"▓▓▓▓    ▓   ▓▓▓▓▓▓▓ ").bright_cyan();
-        retval[5] = ColoredString::from(r"▓▓▓  ▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
-        retval[6] = ColoredString::from(r"▓▓▓▓      ▓▓▓▓▓▓▓▓  ").bright_cyan();
-        retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
+        retval[0] = ColoredString::from(r"    ┌──────────┐    ").bright_cyan();
+        retval[1] = ColoredString::from(r"  ┌─┘          └─┐  ").bright_cyan();
+        retval[2] = ColoredString::from(r" ┌┘      ┌────┐  └┐").bright_cyan();
+        retval[3] = ColoredString::from(r"┌┘       |        | ").bright_cyan();
+        retval[4] = ColoredString::from(r"|   ┌─── ├───     | ").bright_cyan();
+        retval[5] = ColoredString::from(r"|   |    |       ┌┘ ").bright_cyan();
+        retval[6] = ColoredString::from(r"|   └────┘     ┌─┘  ").bright_cyan();
+        retval[7] = ColoredString::from(r"└──────────────┘    ").bright_cyan();
     } else if os_version.contains("windows"){ // if the OS version contains "windows" meant for windows
         retval[0] = ColoredString::from(r" ╔══════╗  ╔══════╗ ").truecolor(0, 120, 212);
         retval[1] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
