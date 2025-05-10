@@ -3,9 +3,9 @@ use colored::{Colorize,ColoredString};
 
 
 fn ascii_art() -> [ColoredString; 8] {
-    let os_version = System::long_os_version().unwrap_or_default();
+    let os_version = System::long_os_version().unwrap_or_default().to_lowercase();
     let mut retval: [ColoredString; 8] = Default::default();
-    if os_version.contains("Arch"){
+    if os_version.contains("arch"){
         retval[0] = ColoredString::from(r"           .        ").bright_cyan();
         retval[1] = ColoredString::from(r"          / \       ").bright_cyan();
         retval[2] = ColoredString::from(r"         /   \      ").bright_cyan();
@@ -14,7 +14,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"      /  (   ) _\   ").bright_cyan();
         retval[6] = ColoredString::from(r"     / _.~   ~._^\  ").bright_cyan();
         retval[7] = ColoredString::from(r"    /.^         ^.\ ").bright_cyan();
-    } else if os_version.contains("Fedora"){
+    } else if os_version.contains("fedora"){
         retval[0] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
         retval[1] = ColoredString::from(r"  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓  ").bright_cyan();
         retval[2] = ColoredString::from(r" ▓▓▓▓▓▓▓▓  ▓▓  ▓▓▓▓ ").bright_cyan();
@@ -23,7 +23,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"▓▓▓  ▓▓▓▓ ▓▓▓▓▓▓▓▓▓ ").bright_cyan();
         retval[6] = ColoredString::from(r"▓▓▓▓      ▓▓▓▓▓▓▓▓  ").bright_cyan();
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ").bright_cyan();
-    } else if os_version.contains("Windows"){
+    } else if os_version.contains("windows"){
         retval[0] = ColoredString::from(r" ╔══════╗  ╔══════╗ ").truecolor(0, 120, 212);
         retval[1] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[2] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
@@ -32,7 +32,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[6] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[7] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(0, 120, 212);
-    } else if os_version.contains("Darwin"){
+    } else if os_version.contains("mac"){
         retval[0] = ColoredString::from(r"           ▓▓       ").white();
         retval[1] = ColoredString::from(r"          ▓▓        ").white();
         retval[2] = ColoredString::from(r"     ▓▓▓▓    ▓▓▓    ").white();
@@ -41,7 +41,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"   ▓▓▓▓▓▓▓▓▓▓▓▓     ").white();
         retval[6] = ColoredString::from(r"    ▓▓▓▓▓▓▓▓▓▓▓▓▓   ").white();
         retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
-    } else if os_version.contains("Ubuntu"){
+    } else if os_version.contains("ubuntu"){
         retval[0] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓").truecolor(250, 70, 22);
         retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[2] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
@@ -50,7 +50,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[6] = ColoredString::from(r"▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓").truecolor(250, 70, 22);
-    } else if os_version.contains("Linux"){
+    } else if os_version.contains("linux"){
         retval[0] = ColoredString::from(r"        .---.      ");
         retval[1] = ColoredString::from(r"       /     \     ");
         retval[2] = ColoredString::from(r"       \.o-o./     ");
