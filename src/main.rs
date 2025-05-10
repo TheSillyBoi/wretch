@@ -89,8 +89,8 @@ fn main() {
     println!("Hostname: {}", format!("{}@{}", whoami::username(), System::host_name().unwrap()).cyan());
 
 
-    let mem_used_mb = sys.used_memory() / 1024 /1024;
-    let mem_total_mb = sys.total_memory() / 1024 / 1024;
+    let mem_used_mb = sys.used_memory() / 1024 /1024; //Converts used to GB
+    let mem_total_mb = sys.total_memory() / 1024 / 1024; //Converts Total to GB
     let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory();
     print!("{}", os_ascii[5]);
     println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb.to_string(), mem_total_mb.to_string().cyan()).cyan() , format!("({}%)", mem_usage_prc.to_string()).cyan());
