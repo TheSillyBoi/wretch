@@ -15,7 +15,7 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[5] = ColoredString::from(r"      /  (   ) _\   ").bright_cyan();
         retval[6] = ColoredString::from(r"     / _.~   ~._^\  ").bright_cyan();
         retval[7] = ColoredString::from(r"    /.^         ^.\ ").bright_cyan();
-    } else if os_version.contains("fedohr"){ // if the OS version contains "fedora" meant for fedora linux
+    } else if os_version.contains("fedora"){ // if the OS version contains "fedora" meant for fedora linux
         retval[0] = ColoredString::from(r"    ┌──────────┐    ").bright_cyan();
         retval[1] = ColoredString::from(r"  ┌─┘          └─┐  ").bright_cyan();
         retval[2] = ColoredString::from(r" ┌┘      ┌───┐   └┐ ").bright_cyan();
@@ -33,15 +33,15 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[5] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[6] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(0, 120, 212);
         retval[7] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(0, 120, 212);
-    } else if os_version.contains("fedora"){ // if the OS version contains "mac" meant for macOS
+    } else if os_version.contains("mac"){ // if the OS version contains "mac" meant for macOS
         retval[0] = ColoredString::from(r"           ╔═       ").white();
         retval[1] = ColoredString::from(r"          ╔╝        ").white();
-        retval[2] = ColoredString::from(r"     ╔══╗ ║  ╔═╗    ").white();
-        retval[3] = ColoredString::from(r"    ╔╝  ╚════╝╔╝    ").white();
-        retval[4] = ColoredString::from(r"   ╔╝        ╔╝     ").white();
-        retval[5] = ColoredString::from(r"   ╚╗        ╚═╗    ").white();
-        retval[6] = ColoredString::from(r"    ╚═╗ ╔════╗ ║    ").white();
-        retval[7] = ColoredString::from(r"      ╚═╝    ╚═╝    ").white();
+        retval[2] = ColoredString::from(r"   ╔════╗   ╔═══╗    ").white();
+        retval[3] = ColoredString::from(r"  ╔╝    ╚═══╝  ╔╝   ").white();
+        retval[4] = ColoredString::from(r"  ║           ╔╝   ").white();
+        retval[5] = ColoredString::from(r"  ║           ╚╗   ").white();
+        retval[6] = ColoredString::from(r"  ╚╗   ╔════╗  ╚╗   ").white();
+        retval[7] = ColoredString::from(r"   ╚═══╝    ╚═══╝   ").white();
     } else if os_version.contains("ubuntu"){ // if the OS version contains "ubuntu" meant for ubuntu linux
         retval[0] = ColoredString::from(r"             ╔═╗    ").truecolor(250, 70, 22);
         retval[1] = ColoredString::from(r"             ╚═╝    ").truecolor(250, 70, 22);
