@@ -1,0 +1,123 @@
+name: Make Draft Release for Wretch
+
+on:
+  repository_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - name: Windows
+          os: windows-latest
+        
+        - name: macOS
+          os: macos-latest
+        
+        - name: Linux
+          os: ubuntu-latest
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Cache Cargo Registry and Builds
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Build
+      run: |
+        cargo build --release --verbose
+
+    - name: Test Binary
+      shell: bash
+      run: |
+        if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
+          echo "Testing Release Binary"
+          target/release/wretch.exe
+        else
+          echo "Testing Release Binary"
+          chmod +x target/release/wretch
+          target/release/wretch
+        fi
+      env:
+        CLICOLOR_FORCE: 1
+
+    - name: Change File Names
+      shell: bash
+      id: rename
+      run: |
+        version=$(cat Cargo.toml | grep 'version' | cut -d '"' -f 2)
+        if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
+          echo "releasefilename=wretch-release-${version}.exe" >> $GITHUB_OUTPUT
+          mv target/release/wretch.exe target/release/wretch-release-${version}.exe
+        elif [[ ${{ matrix.config.os }} == 'macos-latest' ]]; then
+          echo "releasefilename=wretch-release-${version}-macos" >> $GITHUB_OUTPUT
+          mv target/release/wretch target/release/wretch-release-${version}-macos
+        else
+          echo "releasefilename=wretch-release-${version}-linux" >> $GITHUB_OUTPUT
+          mv target/release/wretch target/release/wretch-release-${version}-linux
+        fi
+
+    - name: Upload release artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.rename.outputs.releasefilename }}
+        path: target/release/${{ steps.rename.outputs.releasefilename }}
+
+  package:
+    name: Package Builds
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        path: wretch
+    - name: Get Version
+      id: get_version
+      run: |
+        version=$( cat ./wretch/Cargo.toml | grep 'version' | cut -d '"' -f 2)
+        echo "version=${version}" >> $GITHUB_ENV
+    - uses: actions/download-artifact@v4
+      with:
+        path: "artifacts2"
+
+    - name: move artifacts
+      run: |
+        mkdir artifacts
+        mv artifacts2/*/* artifacts
+
+    - name: Make Draft Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ env.version }}
+        name: 'Wretch v${{ env.version }}'
+        draft: true
+        body: |
+          ## Wretch v${{ env.version }}
+
+          - release notes!
+        files: |
+          artifacts/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  

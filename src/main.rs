@@ -105,18 +105,18 @@ fn main() {
     println!("Hostname: {}", format!("{}@{}", whoami::username(), System::host_name().unwrap()).cyan()); // Prints the hostname and username
 
 
-    let mem_used_mb = sys.used_memory() / 1024 /1024; // Converts used to MB
+    let mem_used_mb = sys.used_memory() / 1024 / 1024; // Converts used to MB
     let mem_total_mb = sys.total_memory() / 1024 / 1024; // Converts Total to MB
     let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory(); // Calculates the percentage of memory used
     print!("{}", os_ascii[5]); // prints the sixth line of the ascii art
-    println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb.to_string(), mem_total_mb.to_string().cyan()).cyan() , format!("({}%)", mem_usage_prc.to_string()).cyan()); // prints the memory usage
+    println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb, mem_total_mb).cyan() , format!("({}%)", mem_usage_prc).cyan()); // prints the memory usage
 
     print!("{}", os_ascii[6]);// prints the seventh line of the ascii art
     if sys.total_swap() != 0 { // Checks if swap memory is available
         let swap_used_mb = sys.used_swap() / 1024 / 1024; // Converts used to MB
         let swap_total_mb = sys.total_swap() / 1024 / 1024; // Converts Total to MB
         let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap(); // Calculates the percentage of swap memory used
-        println!("Swap Usage: {} {}", format!("{}/{} MB", swap_used_mb.to_string(), swap_total_mb.to_string()).cyan(), format!("({}%)", swap_usage_prc.to_string()).cyan()); // prints the swap usage
+        println!("Swap Usage: {} {}", format!("{}/{} MB", swap_used_mb, swap_total_mb).cyan(), format!("({}%)", swap_usage_prc).cyan()); // prints the swap usage
     } else {
         println!("Swap Usage: {}", "No Swap Memory (0%)".cyan()); // prints if no swap memory is available
     }
@@ -149,7 +149,7 @@ fn format_version() -> String {
         if commit != "" {
             format!("{base} ({commit})")
         } else {
-            format!("{base} (commit unknown")
+            format!("{base} (commit unknown)")
         }
     }
 }
