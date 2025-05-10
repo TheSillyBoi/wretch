@@ -1,5 +1,4 @@
 use sysinfo::{System};
-use whoami;
 use colored::{Colorize,ColoredString};
 
 
@@ -63,7 +62,7 @@ fn ascii_art() -> [ColoredString; 8] {
       
     }
 
-    return retval;
+    retval
 }
 
 
