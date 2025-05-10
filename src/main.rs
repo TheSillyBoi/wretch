@@ -45,13 +45,23 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[7] = ColoredString::from(r"      ▓▓▓    ▓▓▓    ").white();
     } else if os_version.contains("Ubuntu"){
         retval[0] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓").truecolor(250, 70, 22);
-        retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓ ").truecolor(250, 70, 22);
+        retval[1] = ColoredString::from(r"▓▓▓▓▓  ▓▓     ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[2] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[3] = ColoredString::from(r"  ▓  ▓▓▓    ▓▓   ▓▓▓").truecolor(250, 70, 22);
         retval[4] = ColoredString::from(r"▓▓▓  ▓▓▓    ▓▓▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[5] = ColoredString::from(r"▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓").truecolor(250, 70, 22);
         retval[6] = ColoredString::from(r"▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓").truecolor(250, 70, 22);
         retval[7] = ColoredString::from(r"▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓").truecolor(250, 70, 22);
+    } else if os_version.contains("Linux"){
+        retval[0] = ColoredString::from(r"        .---.      ");
+        retval[1] = ColoredString::from(r"       /     \     ");
+        retval[2] = ColoredString::from(r"       \.o-o./     ");
+        retval[3] = ColoredString::from(r"       /`\_/`\     ");
+        retval[4] = ColoredString::from(r"      //     \\    ");
+        retval[5] = ColoredString::from(r"     | \     )|_   ");
+        retval[6] = ColoredString::from(r"    /`\_`>  <_/ \  ");
+        retval[7] = ColoredString::from(r" jgs\__/'---'\__/  ");
+
     }
 
     return retval;
@@ -97,7 +107,6 @@ fn main() {
 
     print!("{}",os_ascii[7].clone());
     println!("CPU Usage : {}{}", sys.global_cpu_usage().to_string().cyan(),"%".cyan());
-    // println!("CPU Temperature : {}°C", sys.cpu_temperature().unwrap_or_default());
-    // println!("Battery Usage: {}%"
+
 
 }
