@@ -59,7 +59,7 @@ fn ascii_art() -> [ColoredString; 8] {
         retval[5] = ColoredString::from(r"     | \     )|_   ");
         retval[6] = ColoredString::from(r"    /`\_`>  <_/ \  ");
         retval[7] = ColoredString::from(r" jgs\__/'---'\__/  ");
-
+      
     }
 
     return retval;
