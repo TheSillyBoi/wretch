@@ -53,6 +53,7 @@ jobs:
         cargo test --verbose
         cargo test --release --verbose
     - name: Test Binary
+      shell: bash
       run: |
         if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
           echo "Testing Debug Binary"
