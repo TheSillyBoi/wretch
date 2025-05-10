@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 colored = "3.0.0"
 sysinfo = "0.34.2"
+whoami = "1.6.0"

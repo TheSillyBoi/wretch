@@ -1,4 +1,5 @@
 use sysinfo::{System};
+use whoami;
 use colored::{Colorize,ColoredString};
 
 
@@ -64,13 +65,17 @@ fn ascii_art() -> [ColoredString; 8] {
 
     return retval;
 }
+
+
 fn main() {
     let os_ascii: [ColoredString; 8] = ascii_art();
     let mut sys: System = System::new_all();
     sys.refresh_all();
 
+    
+
     print!("{}",os_ascii[0].clone());
-    println!("System information");
+    println!("{}'s System information", whoami::realname());
 
     print!("{}",os_ascii[1].clone());
     println!("System name: {}", System::name().unwrap().cyan());
@@ -82,7 +87,7 @@ fn main() {
     println!("System kernel version: {}", System::kernel_long_version().cyan());
 
     print!("{}",os_ascii[4].clone());
-    println!("Hostname: {}", System::host_name().unwrap().cyan());
+    println!("Hostname: {}{}{}", whoami::username().cyan(), "@".cyan(), System::host_name().unwrap().cyan());
 
 
     let mem_used_mb: u64 = sys.used_memory() / 1024 /1024;
