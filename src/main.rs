@@ -61,14 +61,14 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[6] = ColoredString::from(r"    /`\_`>  <_/ \   ");
         retval[7] = ColoredString::from(r" jgs\__/'---'\__/   ");
     } else { // if the OS version does not match any of the above
-        retval[0] = ColoredString::from(r"╔══════════════════╗");
-        retval[1] = ColoredString::from(r"║                  ║");
-        retval[2] = ColoredString::from(r"║                  ║");
-        retval[3] = ColoredString::from(r"║                  ║");
-        retval[4] = ColoredString::from(r"╚═══════╦══╦═══════╝");
-        retval[5] = ColoredString::from(r"        ║  ║        ");
-        retval[6] = ColoredString::from(r"    ╔═══╝  ╚═══╗    ");
-        retval[7] = ColoredString::from(r"    ╚══════════╝    ");
+        retval[0] = ColoredString::from(r"╔══════════════════╗").truecolor(255,255,255);
+        retval[1] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
+        retval[2] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
+        retval[3] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
+        retval[4] = ColoredString::from(r"╚═══════╦══╦═══════╝").truecolor(255,255,255);
+        retval[5] = ColoredString::from(r"        ║  ║        ").truecolor(255,255,255);
+        retval[6] = ColoredString::from(r"    ╔═══╝  ╚═══╗    ").truecolor(255,255,255);
+        retval[7] = ColoredString::from(r"    ╚══════════╝    ").truecolor(255,255,255);
       
     }
 
