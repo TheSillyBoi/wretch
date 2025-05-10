@@ -64,7 +64,7 @@ jobs:
       shell: bash
       id: rename
       run: |
-        version=$(cat Cargo.toml | grep 'version' | cut -d '"' -f 2)
+        version=$(grep '^version\s*=' Cargo.toml | head -n 1 | cut -d '"' -f 2)
         if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
           echo "releasefilename=wretch-release-${version}.exe" >> $GITHUB_OUTPUT
           mv target/release/wretch.exe target/release/wretch-release-${version}.exe
