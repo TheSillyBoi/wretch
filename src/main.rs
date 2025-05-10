@@ -1,7 +1,5 @@
-use sysinfo::*;
-use colored::Colorize;
-//use std::string::String;
-use colored::ColoredString;
+use sysinfo::{System};
+use colored::{Colorize,ColoredString};
 
 
 fn ascii_art() -> [ColoredString; 8] {

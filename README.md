@@ -12,7 +12,8 @@ Right now you can get the latest nightly build from the releases tab
 ## Building and Compiling 
  - Download rust
  - Clone Repo
- - run `cargo run`
+ - run `cargo run --release` to run and build the best version of the project
+ - 'optional' move the file from target/release/wretch to /usr/bin/wretch for easier access
 
 ## Credits
 https://www.asciiart.eu/computers/linux for ascii art of some logos
