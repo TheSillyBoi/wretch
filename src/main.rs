@@ -36,12 +36,22 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
     } else if os_version.contains("mac"){ // if the OS version contains "mac" meant for macOS
         retval[0] = ColoredString::from(r"           ╔═       ").white();
         retval[1] = ColoredString::from(r"          ╔╝        ").white();
-        retval[2] = ColoredString::from(r"   ╔════╗   ╔═══╗    ").white();
+        retval[2] = ColoredString::from(r"   ╔════╗   ╔═══╗   ").white();
         retval[3] = ColoredString::from(r"  ╔╝    ╚═══╝  ╔╝   ").white();
-        retval[4] = ColoredString::from(r"  ║           ╔╝   ").white();
-        retval[5] = ColoredString::from(r"  ║           ╚╗   ").white();
+        retval[4] = ColoredString::from(r"  ║           ╔╝    ").white();
+        retval[5] = ColoredString::from(r"  ║           ╚╗    ").white();
         retval[6] = ColoredString::from(r"  ╚╗   ╔════╗  ╚╗   ").white();
         retval[7] = ColoredString::from(r"   ╚═══╝    ╚═══╝   ").white();
+    } /*else if os_version.contains("debian"){ // if the OS version contains "debian" meant for debian linux, to do
+        retval[0] = ColoredString::from(r"                    ").truecolor(250, 70, 22);
+        retval[1] = ColoredString::from(r"                    ").truecolor(250, 70, 22);
+        retval[2] = ColoredString::from(r"                    ").truecolor(250, 70, 22);  ╗
+        retval[3] = ColoredString::from(r"                    ").truecolor(250, 70, 22); ╝╚
+        retval[4] = ColoredString::from(r"                    ").truecolor(250, 70, 22);  ╔
+        retval[5] = ColoredString::from(r"                    ").truecolor(250, 70, 22); ║
+        retval[6] = ColoredString::from(r"                    ").truecolor(250, 70, 22);  ═
+        retval[7] = ColoredString::from(r"                    ").truecolor(250, 70, 22);*/  
+
     } else if os_version.contains("ubuntu"){ // if the OS version contains "ubuntu" meant for ubuntu linux
         retval[0] = ColoredString::from(r"             ╔═╗    ").truecolor(250, 70, 22);
         retval[1] = ColoredString::from(r"             ╚═╝    ").truecolor(250, 70, 22);
@@ -118,7 +128,7 @@ fn main() {
         let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap(); // Calculates the percentage of swap memory used
         println!("Swap Usage: {} {}", format!("{}/{} MB", swap_used_mb, swap_total_mb).cyan(), format!("({}%)", swap_usage_prc).cyan()); // prints the swap usage
     } else {
-        println!("Swap Usage: {}", "No Swap Memory (0%)".cyan()); // prints if no swap memory is available
+        println!("Swap Usage: {}", "No Swap Memory".cyan()); // prints if no swap memory is available
     }
 
     print!("{}", os_ascii[7]);// prints the eighth line of the ascii art
