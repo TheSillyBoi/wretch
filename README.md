@@ -15,7 +15,7 @@ Right now you can get the [latest release](https://github.com/thesillyboi/wretch
 ### Arch Linux
 **For Arch Linux Users** you can get the package from the AUR using a aur package manager like yay for example or one of your choice<br />
 > To install using yay run the following command
-```shell yay -S wretch```
+>```shell yay -S wretch```
 **Arch Linux Users** you can also get the package via the AUR via these steps
 1. Install `git` and `base-devel` packages
 ```shell
