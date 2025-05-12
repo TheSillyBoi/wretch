@@ -36,13 +36,14 @@ makepkg -si
 > The `i` flag specifies the makepkg program to run the install script after building to install it onto your system!
 
 ## Building and Compiling
-> [!Ignore this if you already have Rust installed] 
-> - Download `rustup` from your package manager or at https://rustup.rs/ if it's not available.
->> [!IMPORTANT]
->   > Don't use rust from your package manager,
->   > use rustup instead<br />
->   > If you're on Windows or your distro doesn't have rustup in your package manager use https://rustup.rs/
+ Ignore the current paragraph if you already have `rustup` installed and working
+ - Download `rustup` from your package manager or at https://rustup.rs/ if it's not available.
+> [!IMPORTANT]
+   > Don't use rust from your package manager,
+   > use rustup instead<br />
+   > If you're on Windows or your distro doesn't have rustup in your package manager use https://rustup.rs/
  - run `rustup update stable` to get the latest toolchain
+
  - Clone Repo `git clone https://github.com/thesillyboi/wretch`
  - Run `cargo run --release` to run and build the best version of the project
 
