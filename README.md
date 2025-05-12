@@ -36,7 +36,7 @@ makepkg -si
 > The `i` flag specifies the makepkg program to run the install script after building to install it onto your system!
 
 ## Building and Compiling
- Ignore the current paragraph if you already have `rustup` installed and working
+    **Ignore the current paragraph if you already have rustup installed and working**
  - Download `rustup` from your package manager or at https://rustup.rs/ if it's not available.
 > [!IMPORTANT]
    > Don't use rust from your package manager,
