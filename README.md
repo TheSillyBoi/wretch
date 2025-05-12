@@ -13,7 +13,7 @@ Right now you can get the [latest release](https://github.com/thesillyboi/wretch
 > **macOS users**: There is only a Apple Silicon build for wretch and **NOT** for Intel Macs (should come soon when i can make github actions do that)
 
 ### Arch Linux
-**For Arch Linux Users** you can get the package from the AUR using a aur package manager like yay for example or one of your choice<br />
+**For Arch Linux Users** you can get the package from the AUR using a aur package manager like [yay](https://github.com/Jguer/yay) for example or one of your choice<br />
 > To install using yay run the following command
 >```shell
 >yay -S wretch
