@@ -45,6 +45,7 @@ makepkg -si
  - Clone Repo `git clone https://github.com/thesillyboi/wretch`
  - Run `cargo run --release` to run and build the best version of the project
 > - *optionally* (on Linux/Mac) run `sudo mv target/release/wretch /usr/local/bin/wretch` so you can call `wretch` without defining the path
+
 > - *optionally* (on Windows) to add to your `PATH` environment variable and run without defining the path everytime you want to run it
 >   - You can move it to any folder you want
 >     - I recommend making a folder for cli programs downloaded not from a package manager. like a folder in your documents.
