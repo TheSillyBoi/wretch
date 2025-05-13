@@ -62,12 +62,12 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[7] = ColoredString::from(r"     ╚═══════╝      ").green();
     } else if os_version.contains("suse"){ // if the OS version contains "suse" meant for opensuse linux
         retval[0] = ColoredString::from(r"      ╔═══════╗     ").green();
-        retval[1] = ColoredString::from(r"    ╔═╝       ╚═╗   ").green();
-        retval[2] = ColoredString::from(r"  ╔═╝           ╚═╗ ").green();
-        retval[3] = ColoredString::from(r"  ║               ║ ").green();
-        retval[4] = ColoredString::from(r"  ║               ║ ").green();
-        retval[5] = ColoredString::from(r"  ╚═╗           ╔═╝ ").green();
-        retval[6] = ColoredString::from(r"    ╚═╗       ╔═╝   ").green();
+        retval[1] = ColoredString::from(r"    ╔═╝╔══╗   ╚═╗   ").green();
+        retval[2] = ColoredString::from(r"  ╔═╩══╝  ╚═══╗ ╚═╗ ").green();
+        retval[3] = ColoredString::from(r"  ║        ╔═╗╚╗  ║ ").green();
+        retval[4] = ColoredString::from(r"  ║        ╚═╝╔╝  ║ ").green();
+        retval[5] = ColoredString::from(r"  ╚═╗   ╔═════╝ ╔═╝ ").green();
+        retval[6] = ColoredString::from(r"    ╚═╦═╩════ ╔═╝   ").green();
         retval[7] = ColoredString::from(r"      ╚═══════╝     ").green();
     } else if os_version.contains("ubuntu"){ // if the OS version contains "ubuntu" meant for ubuntu linux
         retval[0] = ColoredString::from(r"             ╔═╗    ").truecolor(250, 70, 22);
