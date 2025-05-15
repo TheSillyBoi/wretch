@@ -79,14 +79,14 @@ fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based 
         retval[6] = ColoredString::from(r"      ════════╝ ╔═╗ ").truecolor(250, 70, 22);
         retval[7] = ColoredString::from(r"                ╚═╝ ").truecolor(250, 70, 22);
     } else if os_version.contains("zorin"){ // if the OS version contains "zorin" meant for zorinOS linux
-        retval[0] = ColoredString::from(r"    ____________    ").truecolor(250, 70, 22);
-        retval[1] = ColoredString::from(r"   /____________\   ").truecolor(250, 70, 22);
-        retval[2] = ColoredString::from(r"  _________         ").truecolor(250, 70, 22);
-        retval[3] = ColoredString::from(r" /                \ ").truecolor(250, 70, 22);
-        retval[4] = ColoredString::from(r" \       _________/ ").truecolor(250, 70, 22);
-        retval[5] = ColoredString::from(r"   ______________   ").truecolor(250, 70, 22);
-        retval[6] = ColoredString::from(r"   \____________/   ").truecolor(250, 70, 22);
-        retval[7] = ColoredString::from(r"                    ").truecolor(250, 70, 22);
+        retval[0] = ColoredString::from(r"    ____________    ").blue();
+        retval[1] = ColoredString::from(r"   /____________\   ").blue();
+        retval[2] = ColoredString::from(r"  _______           ").blue();
+        retval[3] = ColoredString::from(r" / _____/   _____/\ ").blue();
+        retval[4] = ColoredString::from(r" \/        /______/ ").blue();
+        retval[5] = ColoredString::from(r"   ______________   ").blue();
+        retval[6] = ColoredString::from(r"   \____________/   ").blue();
+        retval[7] = ColoredString::from(r"                    ").blue();
     } else if os_version.contains("linux"){ // if the OS version contains "linux" meant for other linux distros
         retval[0] = ColoredString::from(r"        .---.       ");
         retval[1] = ColoredString::from(r"       /     \      ");
