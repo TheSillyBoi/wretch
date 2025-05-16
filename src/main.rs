@@ -1,20 +1,26 @@
 use clap::Parser; // Import the Parser trait from clap
 use sysinfo::System; // Import the System struct from sysinfo
 use colored::Colorize; //import the Colorize trait and ColoredString struct from colored
-mod ascii; // Import the ascii module
+mod ascii; // Import the ascii module(ascii.rs)
 
 
 
 #[derive(Parser, Debug)]
 #[command(name = "wretch", version = build_version(), about = "the tool to get information about your system", ignore_errors(true))]
-struct Args {}
+struct Args {
+    //ascii: Option<String>, // Argument to choose what ASCII art to use, currently unfinished
+
+
+}
+
+
 fn main() {
-//    mod ascii;
+    let _args = Args::parse(); // Parse the command line arguments
     let os_ascii = ascii::ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
+    
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
 
-    let _args = Args::parse();
 
     
 
