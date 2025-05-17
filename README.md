@@ -1,24 +1,24 @@
 # Wretch
-a fetch type cli program that tells you info about ur system
+a fetch-type CLI program that tells you info about ur system
 
 ### Why in the hell does this exist
 - We wanted to learn Rust cause it cool and speedy vroom
 
 ### Why is the code so bad and horrible
-- we are starting out at this, feel free to contribute
-
+- We are starting out at this, feel free to contribute
+  Ex, if your distro is lacking an ASCII, either make it yourself and put it in a Pull Request, or put in a comment for one of us to do it. 
 ## Installation
 Right now you can get the [latest release](https://github.com/thesillyboi/wretch/releases/latest)<br />
 > [!IMPORTANT]
-> **macOS users**: There is only a Apple Silicon build for wretch and **NOT** for Intel Macs (should come soon when i can make github actions do that)
+> **macOS users**: There is only an Apple Silicon build for wretch and **NOT** for Intel Macs (should come soon when I can make GitHub Actions do that)
 
 ### Arch Linux
-**For Arch Linux Users** you can get the package from the AUR using a aur package manager like [yay](https://github.com/Jguer/yay) for example or one of your choice<br />
-> To install using yay run the following command
+**For Arch Linux Users** you can get the package from the AUR using an AUR package manager like [yay](https://github.com/Jguer/yay), for example, or one of your choice<br />
+> To install using yay, run the following command
 >```shell
 >yay -S wretch
 >```
-**Arch Linux Users** you can also get the package via the AUR via these steps
+**Arch Linux Users**, you can also get the package via the AUR via these steps
 1. Install `git` and `base-devel` packages
 ```shell
 sudo pacman -S git base-devel
@@ -59,13 +59,13 @@ makepkg -si
    - At the bottom right of the window click `Environment Variables...`
    - In the `User variables for [your username]` section, scroll down until you see something named `Path` in the `Variable` column.
    - Either double click on that item or click on it once and then click `Edit...` in the User varuables section>>   - Now click on `New` on the window that popped up
-   - Type in the path where your wretch lies but, leave out the wretch as this will include each .cmd, .bat, and .exe file to be in your path. (It also doesn't go into subdirectories)
+   - Type in the path where your wretch lies, but leave out the wretch as this will include each .cmd, .bat, and .exe file to be in your path. (It also doesn't go into subdirectories)
      - Example: C:\Users\username\Documents\command-line-programs
      - Example: C:\Users\username\OneDrive\Documents\command-line-programs
-   - Now click `OK` then click `OK` again and `OK` once more
-   - Now restart/close any shell/cmd/pwsh/powershells you have open and reopen them
+   - Now click `OK`, then click `OK` again, and `OK` once more
+   - Now, restart/close any shells/cmd/pwsh/powershells you have open and reopen them
    - Now try running `wretch`
-   - Instead of doing the above two steps you can restart your computer instead
+   - Instead of doing the above two steps, you can restart your computer.
 
 ## Credits
 https://www.asciiart.eu/computers/linux for ascii art of some logos
