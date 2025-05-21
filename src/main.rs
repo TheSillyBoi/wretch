@@ -8,13 +8,27 @@ mod ascii; // Import the ascii module(ascii.rs)
 #[derive(Parser, Debug)]
 #[command(name = "wretch", version = build_version(), about = "the tool to get information about your system", ignore_errors(true))]
 struct Args {
-    //ascii: Option<String>, // Argument to choose what ASCII art to use, currently unfinished
+    ascii: Option<String>, // Argument to choose what ASCII art to use, currently unfinished
 
 
 }
+pub fn ascii_name() -> String {
+    if Args::parse().ascii.is_some() { // Check if the ascii argument is provided
+        let os_ascii_name = Args::parse().ascii.unwrap(); // Get the ASCII name from the command line argument
+        return os_ascii_name; // Return the ASCII name
+    }
+    else { // If the ascii argument is not provided
+    let os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase(); // Get the OS version and convert it to lowercase
+    let os_ascii_name = os_ascii_name.replace(" ", ""); // Remove spaces from the OS version string
+    let os_ascii_name = os_ascii_name.replace("(", ""); // Remove parentheses from the OS version string
+    let os_ascii_name = os_ascii_name.replace(")", ""); // Remove parentheses from the OS version string
+    return os_ascii_name; // Return the cleaned OS version string}
+    }
 
-
+}
 fn main() {
+    
+
     let _args = Args::parse(); // Parse the command line arguments
     let os_ascii = ascii::ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
     
