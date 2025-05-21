@@ -15,14 +15,14 @@ struct Args {
 pub fn ascii_name() -> String {
     if Args::parse().ascii.is_some() { // Check if the ascii argument is provided
         let os_ascii_name = Args::parse().ascii.unwrap(); // Get the ASCII name from the command line argument
-        return os_ascii_name; // Return the cleaned OS version string}
+        os_ascii_name// Return the cleaned OS version string}
     }
     else { // If the ascii argument is not provided
-        let os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase(); // Get the OS version and convert it to lowercase
-        let os_ascii_name = os_ascii_name.replace(" ", ""); // Remove spaces from the OS version string
-        let os_ascii_name = os_ascii_name.replace("(", ""); // Remove parentheses from the OS version string
-        let os_ascii_name = os_ascii_name.replace(")", ""); // Remove parentheses from the OS version string
-        return os_ascii_name; // Return the cleaned OS version string}
+        let mut os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase(); // Get the OS version and convert it to lowercase
+        os_ascii_name = os_ascii_name.replace(" ", ""); // Remove spaces from the OS version string
+        os_ascii_name = os_ascii_name.replace("(", ""); // Remove parentheses from the OS version string
+        os_ascii_name = os_ascii_name.replace(")", ""); // Remove parentheses from the OS version string
+        os_ascii_name// Return the cleaned OS version string}
 
     }
     
@@ -90,12 +90,12 @@ fn format_version() -> String {
     let is_nightly = env!("NIGHTLY");
 
     if is_nightly == "true" {
-        if commit != "" {
+        if !commit.is_empty() {
             format!("{base}-nightly ({commit})")
         } else {
             format!("{base}-nightly (commit unknown)")
         }
-    } else if commit != "" {
+    } else if !commit.is_empty() {
             format!("{base} ({commit})")
     } else {
             format!("{base} (commit unknown)")
