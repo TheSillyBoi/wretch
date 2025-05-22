@@ -18,8 +18,8 @@ Right now you can get the [latest release](https://github.com/thesillyboi/wretch
 >```shell
 >yay -S wretch
 >```
-**Arch Linux Users**, you can also get the package via the AUR via these steps
-1. Install `git` and `base-devel` packages
+**Arch Linux Users**, you can also get the package via the AUR without the use of a AUR package manager via these steps
+1. Install `git` and `base-devel` packages*You likely already have these packages, but it's good to check*
 ```shell
 sudo pacman -S git base-devel
 ```
@@ -49,7 +49,7 @@ makepkg -si
 
 
 #### To get added to PATH(not needing to define where the file is)
- -  (on Linux/Mac) run `sudo mv target/release/wretch /usr/local/bin/wretch` so you can call `wretch` without defining the path
+ -  (on Linux/Mac) run `sudo mv target/release/wretch /usr/local/bin/wretch` so you can call `wretch` without defining the path *(or move it to another folder in the PATH, such as /bin, /USR/BIN/, /SBIN/, /USR/SBIN, or you can put another folder in the PATH)*
 
  - (on Windows) to add to your `PATH` environment variable and run without defining the path everytime you want to run it
    - You can move it to any folder you want
