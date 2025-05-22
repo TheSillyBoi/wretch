@@ -8,9 +8,7 @@ mod ascii; // Import the ascii module(ascii.rs)
 #[derive(Parser, Debug)]
 #[command(name = "wretch", version = build_version(), about = "the tool to get information about your system", ignore_errors(true))]
 struct Args {
-    ascii: Option<String>, // Argument to choose what ASCII art to use, currently unfinished
-
-
+    ascii: Option<String>, // Argument to choose what ASCII art to use, I need to make it as a flag, but idk how to do that
 }
 pub fn ascii_name() -> String {
     if Args::parse().ascii.is_some() { // Check if the ascii argument is provided
@@ -23,21 +21,43 @@ pub fn ascii_name() -> String {
         os_ascii_name = os_ascii_name.replace("(", ""); // Remove parentheses from the OS version string
         os_ascii_name = os_ascii_name.replace(")", ""); // Remove parentheses from the OS version string
         os_ascii_name// Return the cleaned OS version string}
-
     }
     
 }
-fn main() {
+/*fn info_color() -> Vector {
+    let info = vec![1, 2, 3];
+    //if ascii_name().contains("arch") || ascii_name().contains("fedora") || ascii_name().contains("windows"){
+    //    let color = "";
+   // }
+    if ascii_name().contains("ubuntu"){
+        let info[1] = 250;
+        let info[2] = 70;
+        let info[3] = 22;
+
+    }
+    //else{
+    //    let color = "255,255,255)";
+
+    //}
+
+    color.to_string()
+}*/
     
 
+
+    
+
+
+fn main() {
+    
+    //print!("{}",System::name().unwrap().info_color());
     let _args = Args::parse(); // Parse the command line arguments
     let os_ascii = ascii::ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
     
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
 
-
-    
+    //println!({:?}{}, System::kernel_long_version().unwrap().to_string().info_color());
 
     print!("{}", os_ascii[0]); // prints the first line of the ascii art
     println!("{}'s System information", whoami::realname()); // Prints the person's name using the whoami crate

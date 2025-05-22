@@ -1,6 +1,6 @@
 use crate::ascii_name;
 use colored::{Colorize, ColoredString}; // Import the Colorize trait and ColoredString struct from colored
-pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based on the OS
+pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based on the OS or parameter
     let os_ascii_name = ascii_name(); // Get the OS name
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)
@@ -49,14 +49,14 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
         retval[6] = ColoredString::from(r"        ╚═╗         ").red(); 
         retval[7] = ColoredString::from(r"          ╚═        ").red();
     } else if os_ascii_name.contains("void"){ // if the OS version contains "void" meant for void linux
-        retval[0] = ColoredString::from(r"       ╔═══════╗    ").green();
-        retval[1] = ColoredString::from(r"       ╚═════╗ ╚═╗  ").green();
-        retval[2] = ColoredString::from(r"             ╚═╗ ║  ").green();
-        retval[3] = ColoredString::from(r"   ╔═╗   ╔═╗   ║ ║  ").green();
-        retval[4] = ColoredString::from(r"   ║ ║   ╚═╝   ╚═╝  ").green();
-        retval[5] = ColoredString::from(r"   ║ ╚═╗            ").green();
-        retval[6] = ColoredString::from(r"   ╚═╗ ╚═════╗      ").green();
-        retval[7] = ColoredString::from(r"     ╚═══════╝      ").green();
+        retval[0] = ColoredString::from(r"        ╔═══════╗   ").green();
+        retval[1] = ColoredString::from(r"        ╚═════╗ ╚═╗ ").green();
+        retval[2] = ColoredString::from(r"              ╚═╗ ║ ").green();
+        retval[3] = ColoredString::from(r"  ╔═╗    ╔═╗    ║ ║ ").green();
+        retval[4] = ColoredString::from(r"  ║ ║    ╚═╝    ╚═╝ ").green();
+        retval[5] = ColoredString::from(r"  ║ ╚═╗             ").green();
+        retval[6] = ColoredString::from(r"  ╚═╗ ╚═════╗       ").green();
+        retval[7] = ColoredString::from(r"    ╚═══════╝       ").green();
     } else if os_ascii_name.contains("suse"){ // if the OS version contains "suse" meant for opensuse linux
         retval[0] = ColoredString::from(r"      ╔═══════╗     ").green();
         retval[1] = ColoredString::from(r"    ╔═╝╔══╗   ╚═╗   ").green();
@@ -107,3 +107,4 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
 
     retval
 }
+
