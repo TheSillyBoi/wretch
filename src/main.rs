@@ -13,35 +13,46 @@ struct Args {
 pub fn ascii_name() -> String {
     if Args::parse().ascii.is_some() { // Check if the ascii argument is provided
         let os_ascii_name = Args::parse().ascii.unwrap(); // Get the ASCII name from the command line argument
-        os_ascii_name// Return the cleaned OS version string}
+        os_ascii_name // Convert the ASCII name to lowercase
     }
     else { // If the ascii argument is not provided
         let mut os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase(); // Get the OS version and convert it to lowercase
         os_ascii_name = os_ascii_name.replace(" ", ""); // Remove spaces from the OS version string
         os_ascii_name = os_ascii_name.replace("(", ""); // Remove parentheses from the OS version string
         os_ascii_name = os_ascii_name.replace(")", ""); // Remove parentheses from the OS version string
-        os_ascii_name// Return the cleaned OS version string}
+        os_ascii_name // Return the cleaned OS version string}
     }
-    
+
 }
-/*fn info_color() -> Vector {
-    let info = vec![1, 2, 3];
-    //if ascii_name().contains("arch") || ascii_name().contains("fedora") || ascii_name().contains("windows"){
-    //    let color = "";
-   // }
-    if ascii_name().contains("ubuntu"){
-        let info[1] = 250;
-        let info[2] = 70;
-        let info[3] = 22;
-
+pub fn info_color() -> [u8; 3] {
+    let mut color = [1, 2, 3];
+    if ascii_name().contains("arch") || ascii_name().contains("fedora") || ascii_name().contains("windows") || ascii_name().contains("zorin"){
+        color[0] = 0;
+        color[1] = 120;
+        color[2] = 212;
     }
-    //else{
-    //    let color = "255,255,255)";
-
-    //}
-
-    color.to_string()
-}*/
+    else if ascii_name().contains("ubuntu"){
+        color[0] = 250;
+        color[1] = 70;
+        color[2] = 22;
+    }
+    else if ascii_name().contains("debian"){
+        color[0] = 232;
+        color[1] = 40;
+        color[2] = 43;
+    }
+    else if ascii_name().contains("void") || ascii_name().contains("suse"){
+        color[0] = 0;
+        color[1] = 255;
+        color[2] = 0;
+        }
+    else{
+        color[0] = 0;
+        color[1] = 120;
+        color[2] = 212;
+    }
+    color
+}
     
 
 
@@ -49,8 +60,8 @@ pub fn ascii_name() -> String {
 
 
 fn main() {
-    
-    //print!("{}",System::name().unwrap().info_color());
+    let color = info_color(); // Calls the info_color function to get the color values
+    //println!("{}",System::name().unwrap().truecolor(color[0],color[1],color[2])); // Prints the system name in a specific color
     let _args = Args::parse(); // Parse the command line arguments
     let os_ascii = ascii::ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
     
@@ -63,36 +74,36 @@ fn main() {
     println!("{}'s System information", whoami::realname()); // Prints the person's name using the whoami crate
 
     print!("{}", os_ascii[1]); // prints the second line of the ascii art
-    println!("System name: {} {}", System::name().unwrap().cyan(), format!("({})", System::cpu_arch()).cyan()); // Prints the system name and CPU architecture
+    println!("System name: {} {}", System::name().unwrap().truecolor(color[0],color[1],color[2]), format!("({})", System::cpu_arch()).truecolor(color[0],color[1],color[2])); // Prints the system name and CPU architecture
 
     print!("{}", os_ascii[2]); // prints the third line of the ascii art
-    println!("Operating System Version: {}", System::long_os_version().unwrap_or_default().cyan()); // Prints the OS version
+    println!("Operating System Version: {}", System::long_os_version().unwrap_or_default().truecolor(color[0],color[1],color[2])); // Prints the OS version
 
     print!("{}", os_ascii[3]); // prints the fourth line of the ascii art
-    println!("System kernel version: {}", System::kernel_long_version().cyan()); // Prints the kernel version
+    println!("System kernel version: {}", System::kernel_long_version().truecolor(color[0],color[1],color[2])); // Prints the kernel version
 
     print!("{}", os_ascii[4]);// prints the fifth line of the ascii art
-    println!("Hostname: {}", format!("{}@{}", whoami::username(), System::host_name().unwrap()).cyan()); // Prints the hostname and username
+    println!("Hostname: {}", format!("{}@{}", whoami::username(), System::host_name().unwrap()).truecolor(color[0],color[1],color[2])); // Prints the hostname and username
 
 
     let mem_used_mb = sys.used_memory() / 1024 / 1024; // Converts used to MB
     let mem_total_mb = sys.total_memory() / 1024 / 1024; // Converts Total to MB
     let mem_usage_prc =  sys.used_memory() * 100 / sys.total_memory(); // Calculates the percentage of memory used
     print!("{}", os_ascii[5]); // prints the sixth line of the ascii art
-    println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb, mem_total_mb).cyan() , format!("({}%)", mem_usage_prc).cyan()); // prints the memory usage
+    println!("Memory Usage: {} {}", format!("{}/{} MB", mem_used_mb, mem_total_mb).truecolor(color[0],color[1],color[2]) , format!("({}%)", mem_usage_prc).truecolor(color[0],color[1],color[2])); // prints the memory usage
 
     print!("{}", os_ascii[6]);// prints the seventh line of the ascii art
     if sys.total_swap() != 0 { // Checks if swap memory is available
         let swap_used_mb = sys.used_swap() / 1024 / 1024; // Converts used to MB
         let swap_total_mb = sys.total_swap() / 1024 / 1024; // Converts Total to MB
         let swap_usage_prc = sys.used_swap() * 100 / sys.total_swap(); // Calculates the percentage of swap memory used
-        println!("Swap Usage: {} {}", format!("{}/{} MB", swap_used_mb, swap_total_mb).cyan(), format!("({}%)", swap_usage_prc).cyan()); // prints the swap usage
+        println!("Swap Usage: {} {}", format!("{}/{} MB", swap_used_mb, swap_total_mb).truecolor(color[0],color[1],color[2]), format!("({}%)", swap_usage_prc).truecolor(color[0],color[1],color[2])); // prints the swap usage
     } else {
-        println!("Swap Usage: {}", "No Swap Memory".cyan()); // prints if no swap memory is available
+        println!("Swap Usage: {}", "No Swap Memory".truecolor(color[0],color[1],color[2])); // prints if no swap memory is available
     }
 
     print!("{}", os_ascii[7]);// prints the eighth line of the ascii art
-    println!("CPU Usage: {}", format!("{}%", sys.global_cpu_usage()).cyan()); // prints the CPU usage as a percentage
+    println!("CPU Usage: {}", format!("{}%", sys.global_cpu_usage()).truecolor(color[0],color[1],color[2])); // prints the CPU usage as a percentage
 }
 
 
