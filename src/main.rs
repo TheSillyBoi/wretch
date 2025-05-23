@@ -42,9 +42,9 @@ pub fn info_color() -> [u8; 3] {// Function to get the color values based on the
         color[2] = 255;
     }
     else if ascii_name().contains("debian"){
-        color[0] = 232;
-        color[1] = 40;
-        color[2] = 43;
+        color[0] = 255;
+        color[1] = 0;
+        color[2] = 0;
     }
     else if ascii_name().contains("void") || ascii_name().contains("suse"){
         color[0] = 0;
