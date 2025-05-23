@@ -26,11 +26,17 @@ pub fn ascii_name() -> String {
 }
 pub fn info_color() -> [u8; 3] {// Function to get the color values based on the OS for the Info
     let mut color = [1, 2, 3];
-    if ascii_name().contains("arch") || ascii_name().contains("fedora") || ascii_name().contains("windows") || ascii_name().contains("zorin"){
+    if ascii_name().contains("fedora"){
         color[0] = 0;
         color[1] = 120;
         color[2] = 212;
     }
+    else if ascii_name().contains("windows") || ascii_name().contains("zorin") || ascii_name().contains("arch"){
+        color[0] = 0;
+        color[1] = 0;
+        color[2] = 255;
+    }
+
     else if ascii_name().contains("ubuntu"){
         color[0] = 250;
         color[1] = 70;

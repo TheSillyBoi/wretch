@@ -6,7 +6,6 @@ a fetch-type CLI program that tells you info about ur system
 
 ### Why is the code so bad and horrible
 - We are starting out at this, feel free to contribute
-  Ex, if your distro is lacking an ASCII, either make it yourself and put it in a Pull Request, or put in a comment for one of us to do it. 
 ## Installation
 Right now you can get the [latest release](https://github.com/thesillyboi/wretch/releases/latest)<br />
 > [!IMPORTANT]
@@ -68,4 +67,4 @@ makepkg -si
    - Instead of doing the above two steps, you can restart your computer.
 
 ## Credits
-https://wiki.archlinux.org/title/ASCII_art for ascii art of the arch linux logo  (soon to be redone)
+All logos were created by Adrian Tennies, if you want your distro added/you think you can do it better, please keep the art style intact(trying to make it look like a neon sign), and put it in a pull request, and modify this to credit yourself for the logo
