@@ -85,14 +85,19 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
         retval[6] = ColoredString::from(r"   \____________/   ").blue();
         retval[7] = ColoredString::from(r"                    ").blue();
     } else if os_ascii_name.contains("linux"){ // if the OS version contains "linux" meant for other linux distros
-        retval[0] = ColoredString::from(r"        .---.       ");
-        retval[1] = ColoredString::from(r"       /     \      ");
-        retval[2] = ColoredString::from(r"       \.o-o./      ");
-        retval[3] = ColoredString::from(r"       /`\_/`\      ");
-        retval[4] = ColoredString::from(r"      //     \\     ");
-        retval[5] = ColoredString::from(r"     | \     )|_    ");
-        retval[6] = ColoredString::from(r"    /`\_`>  <_/ \   ");
-        retval[7] = ColoredString::from(r" jgs\__/'---'\__/   ");
+        retval[0] = ColoredString::from(r"       ╔════╗       ").white();
+        retval[1] = ColoredString::from(r"      ╔╝○ ○ ╚╗      ").white();
+        retval[2] = ColoredString::from(r"      ║ ╔══╗ ║      ").white();
+        retval[3] = ColoredString::from(r"     ╔╝╔╩══╩╗╚╗     ").white();
+        retval[4] = ColoredString::from(r"    ╔╝╔╝    ╚╗╚╗    ").white();
+        retval[5] = ColoredString::from(r"  ╔═╩╗║      ║╔╩═╗  ").white();
+        retval[6] = ColoredString::from(r"  ║  ║╚══════╝║  ║  ").white();
+        retval[7] = ColoredString::from(r"  ╚══╩════════╩══╝  ").white();
+              
+        
+      
+   
+
     } else { // if the OS version does not match any of the above
         retval[0] = ColoredString::from(r"╔══════════════════╗").truecolor(255,255,255);
         retval[1] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
@@ -107,4 +112,3 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
 
     retval
 }
-

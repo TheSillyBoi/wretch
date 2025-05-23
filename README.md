@@ -68,4 +68,4 @@ makepkg -si
    - Instead of doing the above two steps, you can restart your computer.
 
 ## Credits
-https://www.asciiart.eu/computers/linux for ascii art of some logos
+https://wiki.archlinux.org/title/ASCII_art for ascii art of the arch linux logo  (soon to be redone)

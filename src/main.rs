@@ -24,7 +24,7 @@ pub fn ascii_name() -> String {
     }
 
 }
-pub fn info_color() -> [u8; 3] {
+pub fn info_color() -> [u8; 3] {// Function to get the color values based on the OS for the Info
     let mut color = [1, 2, 3];
     if ascii_name().contains("arch") || ascii_name().contains("fedora") || ascii_name().contains("windows") || ascii_name().contains("zorin"){
         color[0] = 0;
@@ -35,6 +35,11 @@ pub fn info_color() -> [u8; 3] {
         color[0] = 250;
         color[1] = 70;
         color[2] = 22;
+    }
+    else if ascii_name().contains("mac"){
+        color[0] = 255;
+        color[1] = 255;
+        color[2] = 255;
     }
     else if ascii_name().contains("debian"){
         color[0] = 232;
@@ -47,9 +52,9 @@ pub fn info_color() -> [u8; 3] {
         color[2] = 0;
         }
     else{
-        color[0] = 0;
-        color[1] = 120;
-        color[2] = 212;
+        color[0] = 255;
+        color[1] = 255;
+        color[2] = 255;
     }
     color
 }
@@ -61,14 +66,11 @@ pub fn info_color() -> [u8; 3] {
 
 fn main() {
     let color = info_color(); // Calls the info_color function to get the color values
-    //println!("{}",System::name().unwrap().truecolor(color[0],color[1],color[2])); // Prints the system name in a specific color
     let _args = Args::parse(); // Parse the command line arguments
     let os_ascii = ascii::ascii_art(); // Calls the ascii_art function to get the ASCII art based on the OS
     
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
-
-    //println!({:?}{}, System::kernel_long_version().unwrap().to_string().info_color());
 
     print!("{}", os_ascii[0]); // prints the first line of the ascii art
     println!("{}'s System information", whoami::realname()); // Prints the person's name using the whoami crate
