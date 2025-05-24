@@ -34,6 +34,22 @@ makepkg -si
 > The `s` flag specifies to install dependecies that are not installed yet on your system but are required by the program.<br />
 > The `i` flag specifies the makepkg program to run the install script after building to install it onto your system!
 
+### NixOS Linux
+**NixOS Users** you can get the pacakge via Nix flakes. 
+1. Add the url to your ```flake.nix``` input
+```nix
+wretch.url = "github:thesillyboi/wretch";
+```
+2. Add ```wretch``` to your ```flake.nix``` output
+```nix
+outputs = { wretch, ... }
+```
+3. Add the pacakge in ```environment.systemPackages```
+```nix
+pkgs.inputs.wretch.packages."${system}".default
+```
+4. Rebuild your configuration with nix flakes enabled.
+
 ## Building and Compiling
    *Ignore the current paragraph if you already have rustup installed and working*
  - Download `rustup` from your package manager or at https://rustup.rs/ if it's not available.
