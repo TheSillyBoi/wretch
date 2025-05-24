@@ -1,2 +1,5 @@
 /target
 /.vscode
+
+# For nix flakes
+result
