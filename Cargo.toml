@@ -1,6 +1,6 @@
 [package]
 name = "wretch"
-version = "1.1.1"
+version = "1.1.2"
 edition = "2024"
 build = "scripts/build.rs"
 
