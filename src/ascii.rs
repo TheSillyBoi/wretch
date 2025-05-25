@@ -1,6 +1,5 @@
 use colored::{Colorize, ColoredString}; // Import the Colorize trait and ColoredString struct from colored
 pub fn ascii_art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to Select an ASCII art based on the OS or parameter
-    println!("{}", os_ascii_name);
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
     let mut is_generic = false;
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)

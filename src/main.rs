@@ -12,8 +12,12 @@ struct Args {
     ascii: Option<String>, // Argument to choose what ASCII art to use, I need to make it as a flag, but idk how to do that
 }
 
-fn parse_os_release() -> Option<HashMap<String, String>> {
-    let contents = fs::read_to_string("/etc/os-release").ok()?;
+fn get_os_name() -> (Option<String>, Option<String>) {
+    let contents = match fs::read_to_string("/etc/os-release") {
+        Ok(c) => c,
+        Err(_) => return (None, None),
+    };
+
     let mut map = HashMap::new();
 
     for line in contents.lines() {
@@ -27,17 +31,10 @@ fn parse_os_release() -> Option<HashMap<String, String>> {
         }
     }
 
-    Some(map)
-}
+    let id = map.get("id").cloned();
+    let id_like = map.get("id_like").cloned();
 
-fn get_os_name_candidates() -> (Option<String>, Option<String>) {
-    if let Some(os_info) = parse_os_release() {
-        let id = os_info.get("id").map(|s| s.to_string());
-        let id_like = os_info.get("id_like").map(|s| s.to_string());
-        (id, id_like)
-    } else {
-        (None, None)
-    }
+    (id, id_like)
 }
 
 pub fn ascii_name() -> String {
@@ -52,7 +49,7 @@ pub fn ascii_name() -> String {
     let result = if let Some(ascii_arg) = args.ascii {
         ascii_arg
     } else {
-        let (id_opt, id_like_opt) = get_os_name_candidates();
+        let (id_opt, id_like_opt) = get_os_name();
 
         if let Some(ref id) = id_opt {
             let (_, generic) = ascii::ascii_art(id);
@@ -61,28 +58,27 @@ pub fn ascii_name() -> String {
             } else if let Some(ref id_like) = id_like_opt {
                 id_like.clone()
             } else {
-                fallback_os_name()
+                let mut os_ascii_name =
+                    System::long_os_version().unwrap_or_default().to_lowercase();
+                os_ascii_name = os_ascii_name.replace(' ', "");
+                os_ascii_name = os_ascii_name.replace('(', "");
+                os_ascii_name = os_ascii_name.replace(')', "");
+                os_ascii_name
             }
         } else if let Some(ref id_like) = id_like_opt {
             id_like.clone()
         } else {
-            fallback_os_name()
+            let mut os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase();
+            os_ascii_name = os_ascii_name.replace(' ', "");
+            os_ascii_name = os_ascii_name.replace('(', "");
+            os_ascii_name = os_ascii_name.replace(')', "");
+            os_ascii_name
         }
     };
 
     CACHE.set(result.clone()).ok();
 
     result
-}
-
-fn fallback_os_name() -> String {
-    let mut os_ascii_name = System::long_os_version()
-        .unwrap_or_default()
-        .to_lowercase();
-    os_ascii_name = os_ascii_name.replace(' ', "");
-    os_ascii_name = os_ascii_name.replace('(', "");
-    os_ascii_name = os_ascii_name.replace(')', "");
-    os_ascii_name
 }
 
 pub fn info_color() -> [u8; 3] {
