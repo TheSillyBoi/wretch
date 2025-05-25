@@ -1,6 +1,6 @@
 use clap::Parser; // Import the Parser trait from clap
-use colored::Colorize;
-use sysinfo::System; // Import the System struct from sysinfo //import the Colorize trait and ColoredString struct from colored
+use colored::Colorize; // Import the Colorize trait from colored
+use sysinfo::System; // Import the System struct from sysinfo
 mod ascii; // Import the ascii module(ascii.rs)
 use std::collections::HashMap;
 use std::fs;
