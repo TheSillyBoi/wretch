@@ -5,7 +5,7 @@ a fetch-type CLI program that tells you info about ur system
 - We wanted to learn Rust cause it cool and speedy vroom
 
 ### Why is the code so bad and horrible
-- We are starting out at this, feel free to contribute
+- We are starting out at this, feel free to contribute(if you're looking for something to contribute, check TODO.md)
 ## Installation
 Right now you can get the [latest release](https://github.com/thesillyboi/wretch/releases/latest)<br />
 > [!IMPORTANT]
