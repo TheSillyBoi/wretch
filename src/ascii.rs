@@ -1,8 +1,7 @@
-use crate::ascii_name;
 use colored::{Colorize, ColoredString}; // Import the Colorize trait and ColoredString struct from colored
-pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art based on the OS or parameter
-    let os_ascii_name = ascii_name(); // Get the OS name
+pub fn ascii_art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to Select an ASCII art based on the OS or parameter
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
+    let mut is_generic = false;
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)
         retval[0] = ColoredString::from(r"          ╔═╗       ").truecolor(0, 120, 212);
         retval[1] = ColoredString::from(r"         ╔╝ ╚╗      ").truecolor(0, 120, 212);
@@ -94,6 +93,7 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
         retval[6] = ColoredString::from(r"   \____________/   ").truecolor(0, 0, 255);
         retval[7] = ColoredString::from(r"                    ").truecolor(0, 0, 255);
     } else if os_ascii_name.contains("linux"){ // if the OS version contains "linux" meant for other linux distros
+        is_generic = true;
         retval[0] = ColoredString::from(r"       ╔════╗       ").white();
         retval[1] = ColoredString::from(r"      ╔╝○ ○ ╚╗      ").white();
         retval[2] = ColoredString::from(r"      ║ ╔══╗ ║      ").white();
@@ -102,12 +102,8 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
         retval[5] = ColoredString::from(r"  ╔═╩╗║      ║╔╩═╗  ").white();
         retval[6] = ColoredString::from(r"  ║  ║╚══════╝║  ║  ").white();
         retval[7] = ColoredString::from(r"  ╚══╩════════╩══╝  ").white();
-              
-        
-      
-   
-
     } else { // if the OS version does not match any of the above
+        is_generic = true;
         retval[0] = ColoredString::from(r"╔══════════════════╗").truecolor(255,255,255);
         retval[1] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
         retval[2] = ColoredString::from(r"║                  ║").truecolor(255,255,255);
@@ -116,8 +112,8 @@ pub fn ascii_art() -> [ColoredString; 8] { // Function to Select an ASCII art ba
         retval[5] = ColoredString::from(r"        ║  ║        ").truecolor(255,255,255);
         retval[6] = ColoredString::from(r"    ╔═══╝  ╚═══╗    ").truecolor(255,255,255);
         retval[7] = ColoredString::from(r"    ╚══════════╝    ").truecolor(255,255,255);
-      
+        
     }
 
-    retval
+    return (retval, is_generic);
 }
