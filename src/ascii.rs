@@ -10,7 +10,7 @@ use crate::coloring::info_color;
 
 pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to Select an ASCII art based on the OS or parameter
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
-    let colors = info_color(); // Get the color values based on the OS
+    let mut colors = info_color(); // Get the color values based on the OS
     let mut is_generic = false;
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)
         retval[0] = ColoredString::from(r"          ╔═╗       ").truecolor(colors[0], colors[1], colors[2]);
