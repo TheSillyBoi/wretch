@@ -1,18 +1,24 @@
 use clap::Parser; // Import the Parser trait from clap
 use colored::Colorize; // Import the Colorize trait from colored
 use sysinfo::System; // Import the System struct from sysinfo
-mod ascii; // Import the ascii module(ascii.rs)
-use std::collections::HashMap;
-use std::fs;
-use std::sync::OnceLock;
+use std::collections::HashMap; // Import hash map
+use std::fs; // Import file system
+
+mod ascii; // Import the ascii module (ascii.rs)
+mod coloring; // Import the coloring module (coloring.rs)
+mod version; // Import the version module (version.rs)
 
 #[derive(Parser, Debug)]
-#[command(name = "wretch", version = build_version(), about = "the tool to get information about your system", ignore_errors(true))]
-struct Args {
-    ascii: Option<String>, // Argument to choose what ASCII art to use, I need to make it as a flag, but idk how to do that
+#[command(name = "wretch", version = version::build_version(), about = "the tool to get information about your system", ignore_errors(true))]
+pub struct Args {
+    /// Override the ASCII art
+    #[arg(long = "override")]
+    ascii: Option<String>,
 }
 
-fn get_os_name() -> (Option<String>, Option<String>) {
+/// Function to get OS name for distros.
+/// For example Manjaro is based on Arch Linux
+pub fn get_os_name() -> (Option<String>, Option<String>) {
     let contents = match fs::read_to_string("/etc/os-release") {
         Ok(c) => c,
         Err(_) => return (None, None),
@@ -37,94 +43,10 @@ fn get_os_name() -> (Option<String>, Option<String>) {
     (id, id_like)
 }
 
-pub fn ascii_name() -> String {
-    static CACHE: OnceLock<String> = OnceLock::new();
-
-    if let Some(cached) = CACHE.get() {
-        return cached.clone();
-    }
-
-    let args = Args::parse();
-
-    let result = if let Some(ascii_arg) = args.ascii {
-        ascii_arg
-    } else {
-        let (id_opt, id_like_opt) = get_os_name();
-
-        if let Some(ref id) = id_opt {
-            let (_, generic) = ascii::ascii_art(id);
-            if !generic {
-                id.clone()
-            } else if let Some(ref id_like) = id_like_opt {
-                id_like.clone()
-            } else {
-                let mut os_ascii_name =
-                    System::long_os_version().unwrap_or_default().to_lowercase();
-                os_ascii_name = os_ascii_name.replace(' ', "");
-                os_ascii_name = os_ascii_name.replace('(', "");
-                os_ascii_name = os_ascii_name.replace(')', "");
-                os_ascii_name
-            }
-        } else if let Some(ref id_like) = id_like_opt {
-            id_like.clone()
-        } else {
-            let mut os_ascii_name = System::long_os_version().unwrap_or_default().to_lowercase();
-            os_ascii_name = os_ascii_name.replace(' ', "");
-            os_ascii_name = os_ascii_name.replace('(', "");
-            os_ascii_name = os_ascii_name.replace(')', "");
-            os_ascii_name
-        }
-    };
-
-    CACHE.set(result.clone()).ok();
-
-    result
-}
-
-pub fn info_color() -> [u8; 3] {
-    // Function to get the color values based on the OS for the Info
-    let mut color = [1, 2, 3];
-    if ascii_name().contains("fedora")
-        || ascii_name().contains("nixos")
-        || ascii_name().contains("arch")
-    {
-        color[0] = 0;
-        color[1] = 120;
-        color[2] = 212;
-    } else if ascii_name().contains("windows") 
-        || ascii_name().contains("zorin") {
-        color[0] = 0;
-        color[1] = 0;
-        color[2] = 250;
-    } else if ascii_name().contains("ubuntu") {
-        color[0] = 250;
-        color[1] = 70;
-        color[2] = 22;
-    } else if ascii_name().contains("mac") {
-        color[0] = 255;
-        color[1] = 255;
-        color[2] = 255;
-    } else if ascii_name().contains("debian") {
-        color[0] = 255;
-        color[1] = 0;
-        color[2] = 0;
-    } else if ascii_name().contains("void") 
-    || ascii_name().contains("suse") {
-        color[0] = 0;
-        color[1] = 255;
-        color[2] = 0;
-    } else {
-        color[0] = 255;
-        color[1] = 255;
-        color[2] = 255;
-    }
-    color
-}
-
 fn main() {
-    let color = info_color(); // Calls the info_color function to get the color values
+    let color = coloring::info_color(); // Calls the info_color function to get the color values
     let _args = Args::parse(); // Parse the command line arguments
-    let (os_ascii, _) = ascii::ascii_art(&ascii_name()); // Calls the ascii_art function to get the ASCII art based on the OS
+    let (os_ascii, _is_generic) = ascii::art(&ascii::name()); // Calls the ascii_art function to get the ASCII art based on the OS
 
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
@@ -195,27 +117,4 @@ fn main() {
         "CPU Usage: {}",
         format!("{}%", sys.global_cpu_usage()).truecolor(color[0], color[1], color[2])
     ); // prints the CPU usage as a percentage
-}
-
-// Versioning
-fn build_version() -> &'static str {
-    Box::leak(format_version().into_boxed_str())
-}
-
-fn format_version() -> String {
-    let base = env!("CARGO_PKG_VERSION");
-    let commit = env!("GIT_HASH");
-    let is_nightly = env!("NIGHTLY");
-
-    if is_nightly == "true" {
-        if !commit.is_empty() {
-            format!("{base}-nightly ({commit})")
-        } else {
-            format!("{base}-nightly (commit unknown)")
-        }
-    } else if !commit.is_empty() {
-        format!("{base} ({commit})")
-    } else {
-        format!("{base} (commit unknown)")
-    }
 }
