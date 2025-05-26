@@ -3,26 +3,14 @@ use colored::{Colorize, ColoredString}; // Import the Colorize trait and Colored
 use sysinfo::System; // Import the System struct from sysinfo
 use std::sync::OnceLock; // Import OnceLock
 
+use crate::is_generic; // Import the is_generic function from main.rs
 use crate::get_os_name; // Import the get_os_name function from main.rs
-use crate::Args; // Import the get_os_name function from main.rs
+use crate::Args; // Import the Args struct from main.rs
 use crate::coloring::info_color;
 
-pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS is generic
-    if os_ascii_name.contains("arch") || os_ascii_name.contains("fedora") ||
-       os_ascii_name.contains("windows") || os_ascii_name.contains("nixos") ||
-       os_ascii_name.contains("mac") || os_ascii_name.contains("debian") ||
-       os_ascii_name.contains("void") || os_ascii_name.contains("suse") ||
-       os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin") {
-        false
-    } else {
-        true
-    }
-}
-
-pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to Select an ASCII art based on the OS or parameter
+pub fn art(os_ascii_name: &str) -> [ColoredString; 8] { // Function to Select an ASCII art based on the OS or parameter
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
     let colors = &info_color(); // Get the color values based on the OS
-    let mut is_generic = false;
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)
         retval[0] = ColoredString::from(r"          ╔═╗       ").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r"         ╔╝ ╚╗      ").truecolor(colors[0], colors[1], colors[2]);
@@ -114,7 +102,6 @@ pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to S
         retval[6] = ColoredString::from(r"   \____________/   ").truecolor(colors[0], colors[1], colors[2]);
         retval[7] = ColoredString::from(r"                    ").truecolor(colors[0], colors[1], colors[2]);
     } else if os_ascii_name.contains("linux"){ // if the OS version contains "linux" meant for other linux distros
-        is_generic = true;
         retval[0] = ColoredString::from(r"       ╔════╗       ").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r"      ╔╝○ ○ ╚╗      ").truecolor(colors[0], colors[1], colors[2]);
         retval[2] = ColoredString::from(r"      ║ ╔══╗ ║      ").truecolor(colors[0], colors[1], colors[2]);
@@ -124,7 +111,6 @@ pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to S
         retval[6] = ColoredString::from(r"  ║  ║╚══════╝║  ║  ").truecolor(colors[0], colors[1], colors[2]);
         retval[7] = ColoredString::from(r"  ╚══╩════════╩══╝  ").truecolor(colors[0], colors[1], colors[2]);
     } else { // if the OS version does not match any of the above
-        is_generic = true;
         retval[0] = ColoredString::from(r"╔══════════════════╗").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r"║                  ║").truecolor(colors[0], colors[1], colors[2]);
         retval[2] = ColoredString::from(r"║                  ║").truecolor(colors[0], colors[1], colors[2]);
@@ -133,10 +119,9 @@ pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to S
         retval[5] = ColoredString::from(r"        ║  ║        ").truecolor(colors[0], colors[1], colors[2]);
         retval[6] = ColoredString::from(r"    ╔═══╝  ╚═══╗    ").truecolor(colors[0], colors[1], colors[2]);
         retval[7] = ColoredString::from(r"    ╚══════════╝    ").truecolor(colors[0], colors[1], colors[2]);
-        
     }
 
-    (retval, is_generic)
+    retval
 }
 
 pub fn name() -> String {

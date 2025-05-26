@@ -43,10 +43,22 @@ pub fn get_os_name() -> (Option<String>, Option<String>) {
     (id, id_like)
 }
 
+pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS is generic
+    if os_ascii_name.contains("arch") || os_ascii_name.contains("fedora") ||
+       os_ascii_name.contains("windows") || os_ascii_name.contains("nixos") ||
+       os_ascii_name.contains("mac") || os_ascii_name.contains("debian") ||
+       os_ascii_name.contains("void") || os_ascii_name.contains("suse") ||
+       os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin") {
+        false
+    } else {
+        true
+    }
+}
+
 fn main() {
     let color = coloring::info_color(); // Calls the info_color function to get the color values
     let _args = Args::parse(); // Parse the command line arguments
-    let (os_ascii, _is_generic) = ascii::art(&ascii::name()); // Calls the ascii_art function to get the ASCII art based on the OS
+    let os_ascii = ascii::art(&ascii::name()); // Calls the ascii_art function to get the ASCII art based on the OS
 
     let mut sys = System::new_all(); // Gather system information
     sys.refresh_all(); // Refresh all system information
