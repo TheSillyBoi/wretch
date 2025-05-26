@@ -91,7 +91,8 @@ pub fn info_color() -> [u8; 3] {
         color[0] = 0;
         color[1] = 120;
         color[2] = 212;
-    } else if ascii_name().contains("windows") || ascii_name().contains("zorin") {
+    } else if ascii_name().contains("windows") 
+        || ascii_name().contains("zorin") {
         color[0] = 0;
         color[1] = 0;
         color[2] = 250;
@@ -107,7 +108,8 @@ pub fn info_color() -> [u8; 3] {
         color[0] = 255;
         color[1] = 0;
         color[2] = 0;
-    } else if ascii_name().contains("void") || ascii_name().contains("suse") {
+    } else if ascii_name().contains("void") 
+    || ascii_name().contains("suse") {
         color[0] = 0;
         color[1] = 255;
         color[2] = 0;

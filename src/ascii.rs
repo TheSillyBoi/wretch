@@ -115,5 +115,5 @@ pub fn ascii_art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Functio
         
     }
 
-    return (retval, is_generic);
+    (retval, is_generic)
 }
