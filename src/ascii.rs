@@ -7,6 +7,17 @@ use crate::get_os_name; // Import the get_os_name function from main.rs
 use crate::Args; // Import the get_os_name function from main.rs
 use crate::coloring::info_color;
 
+pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS is generic
+    if os_ascii_name.contains("arch") || os_ascii_name.contains("fedora") ||
+       os_ascii_name.contains("windows") || os_ascii_name.contains("nixos") ||
+       os_ascii_name.contains("mac") || os_ascii_name.contains("debian") ||
+       os_ascii_name.contains("void") || os_ascii_name.contains("suse") ||
+       os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin") {
+        false
+    } else {
+        true
+    }
+}
 
 pub fn art(os_ascii_name: &str) -> ([ColoredString; 8], bool) { // Function to Select an ASCII art based on the OS or parameter
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
@@ -143,7 +154,7 @@ pub fn name() -> String {
         let (id_opt, id_like_opt) = get_os_name();
 
         if let Some(ref id) = id_opt {
-            let (_, generic) = art(id);
+            let generic = is_generic(id);
             if !generic {
                 id.clone()
             } else if let Some(ref id_like) = id_like_opt {
