@@ -42,7 +42,7 @@ wretch.url = "github:thesillyboi/wretch";
 ```
 2. Add the pacakge in ```environment.systemPackages```
 ```nix
-pkgs.inputs.wretch.packages."${system}".default
+inputs.wretch.packages."${system}".default
 ```
 3. Rebuild your configuration with nix flakes enabled.
 > [!TIP]
