@@ -45,7 +45,7 @@ wretch.url = "github:thesillyboi/wretch";
 pkgs.inputs.wretch.packages."${system}".default
 ```
 3. Rebuild your configuration with nix flakes enabled.
-> [!TIPS]
+> [!TIP]
 > Update the application using:
 > ```nix
 > nix flake update wretch
