@@ -84,6 +84,13 @@ jobs:
           target/debug/wretch.exe
           echo "Testing Release Binary"
           target/release/wretch.exe
+        elif [[ ${{ matrix.config.os }} == 'macos-latest' ]]; then
+          echo "Testing Debug Binary"
+          chmod +x target/debug/wretch-universal
+          target/debug/wretch-universal
+          echo "Testing Release Binary"
+          chmod +x target/release/wretch-universal
+          target/release/wretch-universal
         else
           echo "Testing Debug Binary"
           chmod +x target/debug/wretch
