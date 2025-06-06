@@ -65,7 +65,7 @@ jobs:
         cargo build --release --verbose --target x86_64-apple-darwin
 
     - name: Combine macOS Builds
-      if: contains(matrix.config.os, "macos")
+      if: contains(matrix.config.os, 'macos')
       run: |
         lipo -create \
            target/release/wretch \
