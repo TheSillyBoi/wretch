@@ -49,13 +49,24 @@ jobs:
     - name: Lint
       run: cargo clippy --verbose
 
+    - name: Add x64 for macOS
+      if: contains(matrix.config.os, "macos")
+      run: rustup target add x86_64-apple-darwin
+
     - name: Build
       run: |
         cargo build --verbose
         cargo build --release --verbose
 
+    - name: Build for Intel Macs
+      if: contains(matrix.config.os, "macos")
+      run: |
+        cargo build --verbose --target x86_64-apple-darwin
+        cargo build --release --verbose --target x86_64-apple-darwin
+
     - name: Run tests
       run: |
+        ls target # debug
         cargo test --verbose
         cargo test --release --verbose
 
