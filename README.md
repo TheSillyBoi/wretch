@@ -10,7 +10,6 @@ a fetch-type CLI program that tells you info about ur system
 Right now you can get the [latest release](https://github.com/thesillyboi/wretch/releases/latest)<br />
 > [!IMPORTANT]
 > **macOS users**: There is only an Apple Silicon build for wretch and **NOT** for Intel Macs (should come soon when I can make GitHub Actions do that)
-
 ### Arch Linux
 **For Arch Linux Users** you can get the package from the AUR using an AUR package manager like [yay](https://github.com/Jguer/yay), for example, or one of your choice<br />
 > To install using yay, run the following command
@@ -18,7 +17,7 @@ Right now you can get the [latest release](https://github.com/thesillyboi/wretch
 >yay -S wretch
 >```
 **Arch Linux Users**, you can also get the package via the AUR without the use of a AUR package manager via these steps
-1. Install `git` and `base-devel` packages*You likely already have these packages, but it's good to check*
+1. Install `git` and `base-devel` packages *You likely already have these packages, but it's good to check*
 ```shell
 sudo pacman -S git base-devel
 ```
@@ -85,3 +84,6 @@ inputs.wretch.packages."${system}".default
 
 ## Credits
 All logos were created by Adrian Tennies, if you want your distro added/you think you can do it better, please keep the art style intact(trying to make it look like a neon sign), and put it in a pull request, and modify this to credit yourself for the logo
+
+Thanks for checking this out!
+  -Adrian Tennies & Cooper
