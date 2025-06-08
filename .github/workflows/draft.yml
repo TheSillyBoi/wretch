@@ -62,10 +62,6 @@ jobs:
            target/release/wretch \
            target/x86_64-apple-darwin/release/wretch \
            -output target/release/wretch-universal
-        lipo -create \
-           target/debug/wretch \
-           target/x86_64-apple-darwin/debug/wretch \
-           -output target/debug/wretch-universal
 
     - name: Test Binary
       shell: bash
