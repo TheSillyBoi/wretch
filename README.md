@@ -1,5 +1,6 @@
 # Wretch
 a fetch-type CLI program that tells you info about ur system
+![showing wretch](./screenshot.png)
 
 ### Why in the hell does this exist
 - We wanted to learn Rust cause it cool and speedy vroom
@@ -8,8 +9,7 @@ a fetch-type CLI program that tells you info about ur system
 - We are starting out at this, feel free to contribute(if you're looking for something to contribute, check TODO.md, or if you think something's a good idea, put in in TODO.md through a pull request)
 ## Installation
 Right now you can get the [latest release](https://github.com/thesillyboi/wretch/releases/latest)<br />
-> [!IMPORTANT]
-> **macOS users**: There is only an Apple Silicon build for wretch and **NOT** for Intel Macs (should come soon when I can make GitHub Actions do that)
+Linux/macOS users please do chmod +x
 ### Arch Linux
 **For Arch Linux Users** you can get the package from the AUR using an AUR package manager like [yay](https://github.com/Jguer/yay), for example, or one of your choice<br />
 > To install using yay, run the following command
