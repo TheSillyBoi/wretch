@@ -41,10 +41,31 @@ jobs:
           ~/.cargo/git
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      
+    - name: Add x64 for macOS
+      if: contains(matrix.config.os, 'macos')
+      run: rustup target add x86_64-apple-darwin
 
     - name: Build
       run: |
         cargo build --release --verbose
+
+    - name: Build for Intel Macs
+      if: contains(matrix.config.os, 'macos')
+      run: |
+        cargo build --release --verbose --target x86_64-apple-darwin
+
+    - name: Combine macOS Builds
+      if: contains(matrix.config.os, 'macos')
+      run: |
+        lipo -create \
+           target/release/wretch \
+           target/x86_64-apple-darwin/release/wretch \
+           -output target/release/wretch-universal
+        lipo -create \
+           target/debug/wretch \
+           target/x86_64-apple-darwin/debug/wretch \
+           -output target/debug/wretch-universal
 
     - name: Test Binary
       shell: bash
@@ -52,6 +73,10 @@ jobs:
         if [[ ${{ matrix.config.os }} == 'windows-latest' ]]; then
           echo "Testing Release Binary"
           target/release/wretch.exe
+        elif [[ ${{ matrix.config.os }} == 'macos-latest' ]]; then
+          echo "Testing Release Binary"
+          chmod +x target/release/wretch-universal
+          target/release/wretch-universal
         else
           echo "Testing Release Binary"
           chmod +x target/release/wretch
@@ -70,7 +95,7 @@ jobs:
           mv target/release/wretch.exe target/release/wretch-release-${version}.exe
         elif [[ ${{ matrix.config.os }} == 'macos-latest' ]]; then
           echo "releasefilename=wretch-release-${version}-macos" >> $GITHUB_OUTPUT
-          mv target/release/wretch target/release/wretch-release-${version}-macos
+          mv target/release/wretch-universal target/release/wretch-release-${version}-macos
         else
           echo "releasefilename=wretch-release-${version}-linux" >> $GITHUB_OUTPUT
           mv target/release/wretch target/release/wretch-release-${version}-linux

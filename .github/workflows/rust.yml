@@ -115,8 +115,8 @@ jobs:
         elif [[ ${{ matrix.config.os }} == 'macos-latest' ]]; then
           echo "debugfilename=wretch-debug-nightly-macos" >> $GITHUB_OUTPUT
           echo "releasefilename=wretch-release-nightly-macos" >> $GITHUB_OUTPUT
-          mv target/debug/wretch target/debug/wretch-debug-nightly-macos
-          mv target/release/wretch target/release/wretch-release-nightly-macos
+          mv target/debug/wretch-universal target/debug/wretch-debug-nightly-macos
+          mv target/release/wretch-universal target/release/wretch-release-nightly-macos
         else
           echo "debugfilename=wretch-debug-nightly-linux" >> $GITHUB_OUTPUT
           echo "releasefilename=wretch-release-nightly-linux" >> $GITHUB_OUTPUT
