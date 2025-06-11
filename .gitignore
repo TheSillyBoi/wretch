@@ -1,7 +1,5 @@
 /target
 /.vscode
 
-__pycache__
-.github/scripts/templates/output
 # For nix flakes
 result
