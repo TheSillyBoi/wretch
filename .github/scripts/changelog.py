@@ -66,4 +66,4 @@ def get_latest_version_changes() -> str:
 
 
 with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-  f.write(f'changelog<<"{get_latest_version_changes()}"\n')
+  f.write(f'changelog<<EOF{get_latest_version_changes()}EOF\n')
