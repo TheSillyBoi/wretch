@@ -17,7 +17,7 @@ Tags:
 - info
 - wretch
 ReleaseNotes: |-
-  {RELEASE_NOTES}
+  - release notes will go here
 ReleaseNotesUrl: https://github.com/thesillyboi/wretch/releases/tag/v{VERSION}
 ManifestType: defaultLocale
 ManifestVersion: 1.10.0

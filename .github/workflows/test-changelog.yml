@@ -36,5 +36,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: winget-manifest
-        path: .github/scripts/templates/winget
+        path: .github/scripts/templates/output/winget
         if-no-files-found: error

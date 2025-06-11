@@ -4,4 +4,5 @@ import sys
 import changelog
 
 print("Latest Version:", changelog.get_latest_version())
-print("Latest Version:", changelog.get_latest_version_changes())
+print("Latest Version Changes:")
+print(changelog.get_latest_version_changes())

@@ -42,7 +42,7 @@ def get_changelog() -> str:
 
 def get_latest_version(with_prefix = True) -> str:
   """Find the latest version match in the changelog."""
-  return __get_latest_version()
+  return __get_latest_version(with_prefix=with_prefix)
 
 def get_previous_version(back: int = 1, with_prefix = True) -> str:
   """Find the version before the latest version in the changelog."""
