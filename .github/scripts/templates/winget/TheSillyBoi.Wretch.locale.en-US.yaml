@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
+
+PackageIdentifier: TheSillyBoi.Wretch
+PackageVersion: 0.0.0
+PackageLocale: en-US
+Publisher: TheSillyBoi
+PublisherUrl: https://github.com/thesillyboi
+PublisherSupportUrl: https://github.com/thesillyboi/wretch/issues
+PackageName: wretch
+PackageUrl: https://github.com/thesillyboi/wretch
+License: GPLv3
+LicenseUrl: https://github.com/thesillyboi/wretch/blob/v{VERSION}/LICENSE
+ShortDescription: A cli tool to get information about your system.
+Tags:
+- fetch
+- system
+- info
+- wretch
+ReleaseNotes: |-
+  {RELEASE_NOTES}
+ReleaseNotesUrl: https://github.com/thesillyboi/wretch/releases/tag/v{VERSION}
+ManifestType: defaultLocale
+ManifestVersion: 1.10.0

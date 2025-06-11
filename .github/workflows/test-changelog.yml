@@ -20,4 +20,21 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Test Changelog
-      run: python .github/scripts/changelog.py
+      run: python .github/scripts/draftchangelog.py
+  winget:
+    name: Test winget manifest updating
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Test winget manifest updating
+      run: python .github/scripts/wingetupd.py
+    
+    - name: Upload results
+      uses: actions/upload-artifact@v4
+      with:
+        name: winget-manifest
+        path: .github/scripts/templates/winget
+        if-no-files-found: error

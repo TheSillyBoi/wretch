@@ -1,5 +1,6 @@
 /target
 /.vscode
 
+__pycache__
 # For nix flakes
 result
