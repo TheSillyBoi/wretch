@@ -126,6 +126,10 @@ jobs:
       run: |
         mkdir artifacts
         mv artifacts2/*/* artifacts
+    
+    - name: Run Changelog Script
+      id: changelog
+      run: python wretch/.github/scripts/changelog.py
 
     - name: Make Draft Release
       uses: softprops/action-gh-release@v1
@@ -133,10 +137,7 @@ jobs:
         tag_name: v${{ env.version }}
         name: 'Wretch v${{ env.version }}'
         draft: true
-        body: |
-          ## Wretch v${{ env.version }}
-
-          - release notes!
+        body: ${{ steps.changelog.outputs.changelog }}
         files: |
           artifacts/*
       env:

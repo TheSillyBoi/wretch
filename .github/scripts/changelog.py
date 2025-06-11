@@ -62,3 +62,8 @@ def get_latest_version_changes() -> str:
     return _changelog[latest_version.end():next_version.start()].strip()
   else:
     return _changelog[latest_version.end():].strip()
+
+
+
+with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+  f.write(f"changelog={get_latest_version_changes()}\n")
