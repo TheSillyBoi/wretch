@@ -1,0 +1,25 @@
+name: Update Sources
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  cargo:
+    name: Publish Cargo Crate
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Publish to crates.io
+      run: cargo publish
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+  winget:
+    runs-on: windows-latest
+    steps:
+      - uses: vedantmgoyal9/winget-releaser@main
+        with:
+          identifier: Package.Identifier
+          token: ${{ secrets.WINGET_TOKEN }}
+          fork-user: coopeeobot
