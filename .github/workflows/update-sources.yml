@@ -17,6 +17,7 @@ jobs:
         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
   winget:
     runs-on: windows-latest
+    if: false
     steps:
       - uses: vedantmgoyal9/winget-releaser@main
         with:
