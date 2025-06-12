@@ -8,7 +8,7 @@
 2. if on macOS or linux do `chmod +x ./wretch-blabla`
 3. run it from the command line
 
-## winget (soon)
+## winget
 1. run `winget install TheSillyBoi.Wretch`
 2. restart shell
 
