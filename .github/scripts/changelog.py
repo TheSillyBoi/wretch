@@ -66,7 +66,7 @@ def get_latest_version_changes() -> str:
 
 
 with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-  if os.environ["version"] == get_latest_version():
+  if f"v{os.environ["version"]}" == get_latest_version():
     f.write(f'changelog<<EOF\n{get_latest_version_changes()}\nEOF\n')
   else:
     f.write(f'changelog<<EOF\n# HELLO PERSON WHO IS DRAFTING THIS YOU FORGOT TO INCLUDE THE CHANGES IN CHANGELOG.md\nPLEASE CLICK THE DELETE BUTTON ON THIS DRAFT RELEASE ON THE TOP RIGHT AND ADD WHAT CHANGES WERE DONE IN CHANGELOG.md\nEOF\n')
