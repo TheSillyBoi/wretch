@@ -1,5 +1,8 @@
 # wretch changelog!
 
+## v1.3.1
+* Fix crate uploading
+
 ## v1.3.0
 * Add a changelog!
 * You can access it in wretch as well!

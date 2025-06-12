@@ -12,8 +12,10 @@ struct Page {
 }
 
 fn main() {
+    let out_dir = env::var("OUT_DIR").unwrap();
     println!("cargo:rerun-if-changed=CHANGELOG.md");
-    println!("cargo:rerun-if-changed=src/changelog_data.json");
+    println!("cargo:rerun-if-changed={}/changelog_data.json", out_dir);
+    
     
     // Example info output
     println!("cargo:warning=Running build script...");
@@ -28,6 +30,7 @@ fn main() {
 
     // Print to console
     println!("cargo:warning=Git commit hash: {}", git_hash);
+    println!("cargo:warning=Out Dir: {}", out_dir);
 
     // Parse and generate changelog JSON
     println!("cargo:warning=Parsing changelog...");
@@ -40,6 +43,7 @@ fn main() {
     // Set environment variables for the actual code
     println!("cargo:rustc-env=GIT_HASH={}", git_hash);
     println!("cargo:rustc-env=NIGHTLY={}", std::env::var("NIGHTLY_BUILD").is_ok());
+    println!("cargo:rustc-env=CHANGELOGPATH={}/changelog_data.json", out_dir);
 }
 
 fn format_bullet_points(line: &str) -> String {
@@ -57,9 +61,10 @@ fn format_bullet_points(line: &str) -> String {
 
 fn generate_changelog_json() -> Result<(), Box<dyn std::error::Error>> {
     // Define paths
+    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?);
     let changelog_path = manifest_dir.join("CHANGELOG.md");
-    let output_path = manifest_dir.join("src").join("changelog_data.json");
+    let output_path = out_dir.join("changelog_data.json");
     
     // Read the changelog
     let mut content = String::new();

@@ -1,7 +1,7 @@
 use std::io::{self, Write};
 use crossterm::{
   execute, queue,
-  style::{self, Stylize}, cursor, terminal
+  style, cursor, terminal
 };
 use serde::{Deserialize, Serialize};
 
@@ -13,7 +13,7 @@ struct Page {
 
 fn load_changelog_data() -> Vec<Page> {
   // Include the JSON file at compile time
-  let data = include_str!("changelog_data.json");
+  let data = include_str!(env!("CHANGELOGPATH"));
   
   // Parse JSON into our structure
   match serde_json::from_str(data) {
