@@ -56,8 +56,8 @@ pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS 
 }
 
 fn main() {
-    let color = coloring::info_color(); // Calls the info_color function to get the color values
     let _args = Args::parse(); // Parse the command line arguments
+    let color = coloring::info_color(); // Calls the info_color function to get the color values
     let os_ascii = ascii::art(&ascii::name()); // Calls the ascii_art function to get the ASCII art based on the OS
 
     let mut sys = System::new_all(); // Gather system information
