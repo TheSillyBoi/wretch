@@ -1,5 +1,6 @@
 /target
 /.vscode
 
+/src/changelog_data.json
 # For nix flakes
 result

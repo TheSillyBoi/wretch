@@ -1,5 +1,9 @@
 # wretch changelog!
 
+## v1.3.0
+* Add a changelog!
+* You can access it in wretch as well!
+
 ## v1.2.0
 * Add building for Intel Macs
 * Update Nix Flakes to include all available architectures (thanks @udontur - #4)

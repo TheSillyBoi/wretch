@@ -60,11 +60,13 @@ pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS 
     }
 }
 
-fn main() -> std::io::Result<()> {
+fn main() {
     let args = Args::parse(); // Parse the command line arguments
     
     if args.changelog {
-        return changelog::changelog();
+        // If the changelog flag is set, print the changelog and exit
+        println!("{}", changelog::changelog());
+        return;
     }
 
     let color = coloring::info_color(); // Calls the info_color function to get the color values
@@ -139,6 +141,4 @@ fn main() -> std::io::Result<()> {
         "CPU Usage: {}",
         format!("{}%", sys.global_cpu_usage()).truecolor(color[0], color[1], color[2])
     ); // prints the CPU usage as a percentage
-    
-    Ok(())
 }
