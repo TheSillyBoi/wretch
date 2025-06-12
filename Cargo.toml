@@ -1,6 +1,6 @@
 [package]
 name = "wretch"
-version = "1.3.1"
+version = "1.3.2"
 edition = "2024"
 build = "scripts/build.rs"
 exclude = [".github", "PKGBUILD", "template.PKGBUILD", "flake.nix", "flake.lock", ".vscode"]
@@ -11,7 +11,7 @@ homepage = "https://github.com/thesillyboi/wretch"
 readme = "README.md"
 keywords = ["fetch", "system", "info", "cli", "terminal"]
 authors = ["TheSillyBoi <adrian@tennies.us>", "Cooper <cooptheloop8@gmail.com>"]
-categories = ["command-line-utilities", "system-monitoring"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 colored = "3.0.0"

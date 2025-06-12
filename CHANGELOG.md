@@ -1,5 +1,9 @@
 # wretch changelog!
 
+## v1.3.2
+* Actually fix crate uploading
+* I was lied to, I remember reading that system-monitoring is a category for crates, but apparently not
+
 ## v1.3.1
 * Fix crate uploading
 
