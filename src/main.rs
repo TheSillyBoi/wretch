@@ -12,13 +12,17 @@ mod changelog; // Import the changelog module (changelog.rs)
 #[derive(Parser)]
 #[command(name = "wretch", version = version::build_version(), about = "the tool to get information about your system", ignore_errors(true))]
 pub struct Args {
-    /// Override the ASCII art
-    #[arg(long = "override")]
+    /// Override the ASCII art (alias: override-ascii)
+    #[arg(long = "ascii", alias = "override", alias = "override-ascii")]
     ascii: Option<String>,
+
+    /// Override username (alias: override-name)
+    #[arg(long = "name", alias = "override-name")]
+    username: Option<String>,
 
     /// Show the changelog
     #[arg(long = "changelog", short = 'c', default_value_t = false)]
-    changelog: bool
+    changelog: bool,
 }
 
 /// Function to get OS name for distros.
@@ -74,7 +78,16 @@ fn main() -> std::io::Result<()> {
     sys.refresh_all(); // Refresh all system information
 
     print!("{}", os_ascii[0]); // prints the first line of the ascii art
-    println!("{}'s System information", whoami::realname()); // Prints the person's name using the whoami crate
+    println!(
+        "{}'s System information",
+        if args.username.is_some() {
+            args.username
+                .expect("args.username was Option::None, this should not happen please report this to us at https://github.com/thesillyboi/wretch/issues/new")
+                .to_string()
+        } else {
+            whoami::realname()      
+        }
+    ); // Prints the person's name using the whoami crate
     print!("{}", os_ascii[1]); // prints the second line of the ascii art
     println!(
         "System name: {} {}",

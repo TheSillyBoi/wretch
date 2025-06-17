@@ -1,5 +1,10 @@
 # wretch changelog!
 
+## v1.3.3
+* Added name override (use --name)
+* Changed ascii override from --override to --ascii
+* The ascii art can still be overriden via --override (could be removed at anytime so basically it's deprecated i guess)
+
 ## v1.3.2
 * Actually fix crate uploading
 * I was lied to, I remember reading that system-monitoring is a category for crates, but apparently not
