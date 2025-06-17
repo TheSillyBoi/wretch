@@ -1,16 +1,17 @@
 # installation
-## cargo
-1. install cargo via [rustup](https://rustup.rs/)
-2. run `cargo install wretch`
+
+## winget (recommended for windows)
+1. run `winget install TheSillyBoi.Wretch`
+2. restart shell
 
 ## manually
 1. get from latest release
-2. if on macOS or linux do `chmod +x ./wretch-blabla`
+2. if on macOS or linux do `chmod +x ./wretch-v#.#.#-platform`
 3. run it from the command line
 
-## winget
-1. run `winget install TheSillyBoi.Wretch`
-2. restart shell
+## cargo (basically building from source)
+1. install cargo via [rustup](https://rustup.rs/)
+2. run `cargo install wretch`
 
 ## linux
 ### arch based (using aur)

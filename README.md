@@ -14,6 +14,9 @@ A cli program that tells you info about your system!<br />
 ## Installation
 Look at [INSTALLING](./INSTALL.md) on how to install wretch!
 
+## Changelog
+Look at [CHANGELOG](./CHANGELOG.md) for changes and release notes in between versions
+
 ## Building and Compiling
    *Ignore the current paragraph if you already have rustup installed and working*
  - Download `rustup` from your package manager or at https://rustup.rs/ if it's not available.
