@@ -1,4 +1,8 @@
 # installation
+<a href="https://repology.org/project/wretch/versions">
+    <img src="https://repology.org/badge/vertical-allrepos/wretch.svg" alt="repology packaging status for wretch" align="right">
+</a>
+look at the right to see the packages that have the latest version
 
 ## winget (recommended for windows)
 1. run `winget install TheSillyBoi.Wretch`
