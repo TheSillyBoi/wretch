@@ -1,5 +1,11 @@
 # wretch changelog!
 
+## v1.3.4
+* Added name override (use --name)
+* Changed ascii override from --override to --ascii
+* The ascii art can still be overriden via --override (could be removed at anytime so basically it's deprecated i guess)
+* Fix winget packaging
+
 ## v1.3.3
 * Added name override (use --name)
 * Changed ascii override from --override to --ascii
