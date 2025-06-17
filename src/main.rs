@@ -13,7 +13,7 @@ mod changelog; // Import the changelog module (changelog.rs)
 #[command(name = "wretch", version = version::build_version(), about = "the tool to get information about your system", ignore_errors(true))]
 pub struct Args {
     /// Override the ASCII art (alias: override-ascii)
-    #[arg(long = "ascii", alias = "override", alias = "override-ascii")]
+    #[arg(long = "ascii", alias = "override-ascii", alias = "override")]
     ascii: Option<String>,
 
     /// Override username (alias: override-name)
@@ -53,15 +53,12 @@ pub fn get_os_name() -> (Option<String>, Option<String>) {
 }
 
 pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS is generic
-    if os_ascii_name.contains("arch") || os_ascii_name.contains("fedora") ||
+    !(os_ascii_name.contains("arch") || os_ascii_name.contains("fedora") ||
        os_ascii_name.contains("windows") || os_ascii_name.contains("nixos") ||
        os_ascii_name.contains("mac") || os_ascii_name.contains("debian") ||
        os_ascii_name.contains("void") || os_ascii_name.contains("suse") ||
-       os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin") {
-        false
-    } else {
-        true
-    }
+       os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin"))
+        
 }
 
 fn main() -> std::io::Result<()> {

@@ -7,8 +7,7 @@ pub fn info_color() -> [u8; 3] {
 
     if ascii_name.contains("fedora")
         || ascii_name.contains("nixos")
-        || ascii_name.contains("arch")
-    {
+        || ascii_name.contains("arch") {
         color[0] = 0;
         color[1] = 120;
         color[2] = 212;
@@ -30,7 +29,7 @@ pub fn info_color() -> [u8; 3] {
         color[1] = 0;
         color[2] = 0;
     } else if ascii_name.contains("void") 
-    || ascii_name.contains("suse") {
+        || ascii_name.contains("suse") {
         color[0] = 0;
         color[1] = 255;
         color[2] = 0;
