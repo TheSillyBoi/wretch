@@ -42,6 +42,7 @@ pub fn get_os_name() -> (Option<String>, Option<String>) {
         }
         if let Some((key, val)) = line.split_once('=') {
             let val = val.trim_matches('"');
+	    let val = val.replace("\n","");
             map.insert(key.to_lowercase(), val.to_lowercase());
         }
     }
@@ -59,6 +60,14 @@ pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS 
        os_ascii_name.contains("void") || os_ascii_name.contains("suse") ||
        os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin"))
         
+}
+pub fn remove_newlines(s: &mut String){
+	if s.ends_with('\n'){
+		s.pop();
+		if s.ends_with('\r'){
+			s.pop();
+		}
+	}
 }
 
 fn main() -> std::io::Result<()> {
@@ -95,10 +104,11 @@ fn main() -> std::io::Result<()> {
     ); // Prints the system name and CPU architecture
 
     print!("{}", os_ascii[2]); // prints the third line of the ascii art
+    let mut s = System::long_os_version().expect("it shat itself");
+    remove_newlines(&mut s);
     println!(
         "Operating System Version: {}",
-        System::long_os_version()
-            .unwrap_or_default()
+            s
             .truecolor(color[0], color[1], color[2])
     ); // Prints the OS version
 
