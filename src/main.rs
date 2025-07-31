@@ -61,14 +61,15 @@ pub fn is_generic(os_ascii_name: &str) -> bool { // Function to check if the OS 
        os_ascii_name.contains("ubuntu") || os_ascii_name.contains("zorin"))
         
 }
-pub fn remove_newlines(s: &mut String){
-	if s.ends_with('\n'){
-		s.pop();
-		if s.ends_with('\r'){
-			s.pop();
+
+fn remove_newlines(var: &mut String){ //removes extra lines from System::long_os_version
+	    if var.ends_with('\n'){
+		    var.pop();
+		    if var.ends_with('\r'){
+			    var.pop();
 		}
 	}
-}
+}  
 
 fn main() -> std::io::Result<()> {
     let args = Args::parse(); // Parse the command line arguments
@@ -104,11 +105,11 @@ fn main() -> std::io::Result<()> {
     ); // Prints the system name and CPU architecture
 
     print!("{}", os_ascii[2]); // prints the third line of the ascii art
-    let mut s = System::long_os_version().expect("it shat itself");
-    remove_newlines(&mut s);
+    let mut hello = System::long_os_version().expect("it borked");
+    remove_newlines(&mut hello);
     println!(
         "Operating System Version: {}",
-            s
+            hello
             .truecolor(color[0], color[1], color[2])
     ); // Prints the OS version
 
