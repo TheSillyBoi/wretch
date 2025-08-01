@@ -1,5 +1,8 @@
 # wretch changelog!
 
+## v1.3.5
+* Adrian fixed some stuff
+
 ## v1.3.4
 * Added name override (use --name)
 * Changed ascii override from --override to --ascii
