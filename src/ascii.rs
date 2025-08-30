@@ -12,14 +12,14 @@ pub fn art(os_ascii_name: &str) -> [ColoredString; 8] { // Function to Select an
     let mut retval: [ColoredString; 8] = Default::default(); // Initialize an array of ColoredString with 8 elements
     let colors = &info_color(); // Get the color values based on the OS
     if os_ascii_name.contains("arch"){ // if the OS version contains "arch"(meant to be used for arch linux)
-        retval[0] = ColoredString::from(r"          ╔═╗       ").truecolor(colors[0], colors[1], colors[2]);
-        retval[1] = ColoredString::from(r"         ╔╝ ╚╗      ").truecolor(colors[0], colors[1], colors[2]);
-        retval[2] = ColoredString::from(r"        ╔╝   ╚╗     ").truecolor(colors[0], colors[1], colors[2]);
-        retval[3] = ColoredString::from(r"       ╔╝     ╚╗    ").truecolor(colors[0], colors[1], colors[2]);
-        retval[4] = ColoredString::from(r"      ╔╝ ╔═══╗ ╚╗   ").truecolor(colors[0], colors[1], colors[2]);
-        retval[5] = ColoredString::from(r"     ╔╝  ║   ║  ╚╗  ").truecolor(colors[0], colors[1], colors[2]);
-        retval[6] = ColoredString::from(r"    ╔╝╔══╝   ╚══╗╚╗ ").truecolor(colors[0], colors[1], colors[2]);
-        retval[7] = ColoredString::from(r"    ╚═╝         ╚═╝ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[0] = ColoredString::from(r"        ╔═╗        ").truecolor(colors[0], colors[1], colors[2]);
+        retval[1] = ColoredString::from(r"       ╔╝ ╚╗       ").truecolor(colors[0], colors[1], colors[2]);
+        retval[2] = ColoredString::from(r"      ╔╝   ╚╗      ").truecolor(colors[0], colors[1], colors[2]);
+        retval[3] = ColoredString::from(r"     ╔╝     ╚╗     ").truecolor(colors[0], colors[1], colors[2]);
+        retval[4] = ColoredString::from(r"    ╔╝ ╔═══╗ ╚╗    ").truecolor(colors[0], colors[1], colors[2]);
+        retval[5] = ColoredString::from(r"   ╔╝  ║   ║  ╚╗   ").truecolor(colors[0], colors[1], colors[2]);
+        retval[6] = ColoredString::from(r"  ╔╝ ╔═╝   ╚═╗ ╚╗  ").truecolor(colors[0], colors[1], colors[2]);
+        retval[7] = ColoredString::from(r"  ╚══╝       ╚══╝  ").truecolor(colors[0], colors[1], colors[2]);
     } else if os_ascii_name.contains("fedora"){ // if the OS version contains "fedora" meant for fedora linux
         retval[0] = ColoredString::from(r"    ╔══════════╗    ").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r"  ╔═╝          ╚═╗  ").truecolor(colors[0], colors[1], colors[2]);
@@ -29,6 +29,15 @@ pub fn art(os_ascii_name: &str) -> [ColoredString; 8] { // Function to Select an
         retval[5] = ColoredString::from(r"║  ║    ║        ╔╝ ").truecolor(colors[0], colors[1], colors[2]);
         retval[6] = ColoredString::from(r"║  ╚════╝      ╔═╝  ").truecolor(colors[0], colors[1], colors[2]);
         retval[7] = ColoredString::from(r"╚══════════════╝    ").truecolor(colors[0], colors[1], colors[2]);
+    } else if os_ascii_name.contains("mint"){ // if the OS version contains "mint" meant for linux mint
+        retval[0] = ColoredString::from(r"╔═════════════╗     ").truecolor(colors[0], colors[1], colors[2]);
+        retval[1] = ColoredString::from(r"║   ║         ╚═╗   ").truecolor(colors[0], colors[1], colors[2]);
+        retval[2] = ColoredString::from(r"╚═╗ ║   ╔═╗ ╔═╗ ╚═╗ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[3] = ColoredString::from(r"  ║ ║   ║ ║ ║ ║   ║ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[4] = ColoredString::from(r"  ║ ╚═╗ ║ ║ ║ ║   ║ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[5] = ColoredString::from(r"  ╚═╗ ╚═╗ ╚═╝ ║   ║ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[6] = ColoredString::from(r"    ╚═╗ ╚═════╝ ╔═╝ ").truecolor(colors[0], colors[1], colors[2]);
+        retval[7] = ColoredString::from(r"      ╚═════════╝   ").truecolor(colors[0], colors[1], colors[2]);
     } else if os_ascii_name.contains("windows"){ // if the OS version contains "windows" meant for windows
         retval[0] = ColoredString::from(r" ╔══════╗  ╔══════╗ ").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(colors[0], colors[1], colors[2]);
@@ -38,7 +47,7 @@ pub fn art(os_ascii_name: &str) -> [ColoredString; 8] { // Function to Select an
         retval[5] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(colors[0], colors[1], colors[2]);
         retval[6] = ColoredString::from(r" ║      ║  ║      ║ ").truecolor(colors[0], colors[1], colors[2]);
         retval[7] = ColoredString::from(r" ╚══════╝  ╚══════╝ ").truecolor(colors[0], colors[1], colors[2]);
-} else if os_ascii_name.contains("nixos"){ // if the OS version contains "nix" meant for nixOS linux
+    } else if os_ascii_name.contains("nixos"){ // if the OS version contains "nix" meant for nixOS linux
         retval[0] = ColoredString::from(r"    ╚╗     ╚╗ ╔═    ").truecolor(colors[0], colors[1], colors[2]);
         retval[1] = ColoredString::from(r"     ╚╗     ╚╦╝     ").truecolor(colors[0], colors[1], colors[2]);
         retval[2] = ColoredString::from(r"  ════╩════  ╚╗  ╔  ").truecolor(colors[0], colors[1], colors[2]);
@@ -167,3 +176,12 @@ pub fn name() -> String {
 
     result
 }
+
+
+/*
+    match os_ascii_name(){
+
+
+
+    }
+*/
