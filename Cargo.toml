@@ -1,6 +1,6 @@
 [package]
 name = "wretch"
-version = "1.4.4"
+version = "1.4.0"
 edition = "2024"
 build = "scripts/build.rs"
 exclude = [".github", "PKGBUILD", "template.PKGBUILD", "flake.nix", "flake.lock", ".vscode"]
