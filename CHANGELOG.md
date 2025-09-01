@@ -1,8 +1,10 @@
 # wretch changelog!
 
+## v1.4.1
+* I remembered to add coloring to the Linux Mint Logo
+
 ## v1.4.0
 * I split off the content from the main function, and added a Linux Mint Logo
-
 
 ## v1.3.5
 * Adrian fixed some stuff

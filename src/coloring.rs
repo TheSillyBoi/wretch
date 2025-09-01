@@ -29,7 +29,8 @@ pub fn info_color() -> [u8; 3] {
         color[1] = 0;
         color[2] = 0;
     } else if ascii_name.contains("void") 
-        || ascii_name.contains("suse") {
+        || ascii_name.contains("suse")
+        || ascii_name.contains("mint") {
         color[0] = 0;
         color[1] = 255;
         color[2] = 0;
